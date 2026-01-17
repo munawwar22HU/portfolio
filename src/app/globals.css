@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root { color-scheme: dark; }
+
+/* Component-like helpers without @apply for slash-opacity utilities */
+.glass {
+  border: 1px solid --alpha(var(--color-white) / 10%);
+  background: --alpha(var(--color-white) / 4%);
+  backdrop-filter: blur(12px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.card {
+  border: 1px solid --alpha(var(--color-white) / 10%);
+  background: --alpha(var(--color-white) / 4%);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem; /* ~ rounded-2xl */
+  padding: 1.25rem;    /* p-5 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.pill {
+  border: 1px solid --alpha(var(--color-white) / 10%);
+  background: --alpha(var(--color-white) / 5%);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--color-zinc-200);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  transition: 150ms;
+}
+
+.btn-primary {
+  background: var(--color-white);
+  color: var(--color-zinc-950);
+}
+.btn-primary:hover { background: var(--color-zinc-200); }
+
+.btn-ghost {
+  border: 1px solid --alpha(var(--color-white) / 10%);
+  background: --alpha(var(--color-white) / 4%);
+  backdrop-filter: blur(12px);
+}
+.btn-ghost:hover { background: --alpha(var(--color-white) / 8%); }
+
+.section { scroll-margin-top: 6rem; padding: 3rem 0; }
+.section-title { font-size: 1.875rem; font-weight: 600; letter-spacing: -0.02em; }
+.section-subtitle { margin-top: 0.5rem; max-width: 42rem; color: var(--color-zinc-400); }
+.section-surface{
+  background:
+    radial-gradient(900px 520px at 50% 0%, rgba(99,102,241,0.10), transparent 60%),
+    linear-gradient(180deg, rgba(4,7,15,1) 0%, rgba(5,8,16,1) 100%);
+}
+
+
+/* Your hero gradient helper */
+.hero-bg-exact {
+  background:
+    radial-gradient(1000px 700px at 18% 20%, rgba(59,130,246,0.35), transparent 60%),
+    radial-gradient(1100px 750px at 68% 22%, rgba(168,85,247,0.55), transparent 58%),
+    radial-gradient(1100px 750px at 86% 88%, rgba(239,68,68,0.35), transparent 62%),
+    linear-gradient(135deg, #070a16 0%, #1a0d35 55%, #3a0c1d 100%);
+}
+
+
+/* Premium card (matches Contact look) */
+.premium-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem; /* rounded-2xl */
+  border: 1px solid --alpha(var(--color-white) / 10%);
+  background: --alpha(var(--color-zinc-950) / 35%);
+  backdrop-filter: blur(12px);
+}
+
+.premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    900px 380px at 85% 50%,
+    rgba(124, 58, 237, 0.22),
+    rgba(124, 58, 237, 0.06),
+    transparent 65%
+  );
+}
+
+.premium-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Hover lift + border */
+.premium-card-hover {
+  transition: transform 180ms, border-color 180ms, background 180ms;
+}
+.premium-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.18);
 }
