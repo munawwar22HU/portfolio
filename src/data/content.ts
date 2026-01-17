@@ -212,14 +212,36 @@ export const projects: Project[] = [
 
 export const resume = {
   tabs: ["Current Role", "Education", "Certifications"] as const,
+
   tabCards: {
-    "Current Role": { title: "Current Role", subtitle: "Placeholder summary." },
-    Education: { title: "Education", subtitle: "Placeholder summary." },
+    "Current Role": {
+      title: "Current Role",
+      subtitle: "Brief summary of my current professional role and focus areas.",
+    },
+    Education: {
+      title: "Education",
+      subtitle: "Academic background and formal training.",
+    },
     Certifications: {
       title: "Certifications",
-      subtitle: "Placeholder summary.",
+      subtitle: "Industry-recognized certifications and credentials.",
     },
   },
+
+  // ===== Added placeholder fields (DEPLOY-SAFE) =====
+
+  currentRole: "Data Engineer / Data Analyst (Placeholder)",
+
+  education: [
+    "M.S. in Data Science – Placeholder University",
+    "B.E. in Computer Engineering – Placeholder University",
+  ],
+
+  certifications: [
+    "AWS Cloud Practitioner (Placeholder)",
+  ],
+
+  // ===== Resume PDF =====
   pdfUrl: "/resume.pdf",
 };
 

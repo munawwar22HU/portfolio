@@ -1,21 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { profile, resume } from "@/data/content";
 
+type Tab = (typeof resume.tabs)[number];
+
 export default function Resume() {
-  // Safe arrays (prevents .map on undefined)
-  const tabs = useMemo(() => resume?.tabs ?? [], []);
-  const education = useMemo(() => resume?.education ?? [], []);
-  const certifications = useMemo(() => resume?.certifications ?? [], []);
-  const tabCards = resume?.tabCards ?? ({} as Record<string, { title: string; subtitle: string }>);
-  const currentRole = resume?.currentRole ?? "";
+  const [tab, setTab] = useState<Tab>(resume.tabs[0]);
 
-  // Safe initial tab
-  const [tab, setTab] = useState<(typeof resume.tabs)[number] | string>(tabs[0] ?? "");
-
-  // Safe tab card lookup
-  const activeCard = tab && tabCards[tab] ? tabCards[tab] : { title: "", subtitle: "" };
+  const activeCard = resume.tabCards[tab];
 
   return (
     <section id="resume" className="section section-surface scroll-mt-24">
@@ -26,8 +19,7 @@ export default function Resume() {
             Resume
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-            Download or view my complete professional resume with detailed experience,
-            skills, and achievements in data analytics and machine learning.
+            Download or view my complete professional resume with detailed experience, skills, and achievements.
           </p>
         </div>
 
@@ -36,7 +28,7 @@ export default function Resume() {
           <div className="premium-card">
             <div className="relative p-6 text-center">
               <p className="text-sm font-semibold text-white">Current Role</p>
-              <p className="mt-3 text-sm text-zinc-400">{currentRole || "—"}</p>
+              <p className="mt-3 text-sm text-zinc-400">{resume.currentRole}</p>
             </div>
           </div>
 
@@ -44,7 +36,9 @@ export default function Resume() {
             <div className="relative p-6 text-center">
               <p className="text-sm font-semibold text-white">Education</p>
               <div className="mt-3 space-y-2 text-sm text-zinc-400">
-                {education.length ? education.map((e: string) => <p key={e}>{e}</p>) : <p>—</p>}
+                {resume.education.map((e) => (
+                  <p key={e}>{e}</p>
+                ))}
               </div>
             </div>
           </div>
@@ -53,15 +47,14 @@ export default function Resume() {
             <div className="relative p-6 text-center">
               <p className="text-sm font-semibold text-white">Certifications</p>
               <div className="mt-3 space-y-2 text-sm text-zinc-400">
-                {certifications.length ? (
-                  certifications.map((c: string) => (
-                    <p key={c} className="underline decoration-white/15 underline-offset-4">
-                      {c}
-                    </p>
-                  ))
-                ) : (
-                  <p>—</p>
-                )}
+                {resume.certifications.map((c) => (
+                  <p
+                    key={c}
+                    className="underline decoration-white/15 underline-offset-4"
+                  >
+                    {c}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
@@ -70,30 +63,26 @@ export default function Resume() {
         {/* Tabs + Actions */}
         <div className="mt-10 flex flex-col items-center">
           <div className="flex flex-wrap justify-center gap-2">
-            {tabs.length ? (
-              tabs.map((t: string) => (
-                <button
-                  key={t}
-                  onClick={() => setTab(t)}
-                  className={[
-                    "rounded-full px-4 py-2 text-xs transition",
-                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
-                    tab === t
-                      ? "bg-white text-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.35)]"
-                      : "border border-white/10 bg-white/5 text-zinc-200 hover:bg-white/10",
-                  ].join(" ")}
-                >
-                  {t}
-                </button>
-              ))
-            ) : (
-              <span className="text-xs text-zinc-500">No tabs configured</span>
-            )}
+            {resume.tabs.map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={[
+                  "rounded-full px-4 py-2 text-xs transition",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
+                  tab === t
+                    ? "bg-white text-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.35)]"
+                    : "border border-white/10 bg-white/5 text-zinc-200 hover:bg-white/10",
+                ].join(" ")}
+              >
+                {t}
+              </button>
+            ))}
           </div>
 
           <div className="mt-6 text-center">
-            <p className="text-sm font-semibold text-white">{activeCard.title || " "}</p>
-            <p className="mt-2 text-sm text-zinc-400">{activeCard.subtitle || " "}</p>
+            <p className="text-sm font-semibold text-white">{activeCard.title}</p>
+            <p className="mt-2 text-sm text-zinc-400">{activeCard.subtitle}</p>
           </div>
 
           <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -111,7 +100,7 @@ export default function Resume() {
           </div>
         </div>
 
-        {/* Resume Preview */}
+        {/* Resume Preview (full width) */}
         <div className="mt-12 premium-card">
           <div className="relative">
             <div className="border-b border-white/10 px-5 py-4 text-sm text-zinc-400 text-center">
@@ -119,21 +108,6 @@ export default function Resume() {
             </div>
             <div className="h-[75vh] w-full">
               <iframe title="Resume Preview" src={resume.pdfUrl} className="h-full w-full" />
-            </div>
-          </div>
-        </div>
-
-        {/* Professional Certifications (optional section) */}
-        <div className="mt-16 text-center">
-          <h3 className="text-lg font-semibold text-white">Professional Certifications</h3>
-          <div className="mt-6 flex justify-center">
-            <div className="premium-card max-w-sm">
-              <div className="relative p-6">
-                <p className="text-sm font-semibold text-white">
-                  {certifications[0] ?? "—"}
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">Issued by AWS</p>
-              </div>
             </div>
           </div>
         </div>
