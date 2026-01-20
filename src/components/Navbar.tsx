@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import {profile} from "@/data/content";
 import clsx from "clsx";
 
 const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
+  // {id: "experience", label: "Experience" },
+  // { id: "education", label: "Education" },
   { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ] as const;
@@ -86,7 +89,7 @@ export default function Navbar() {
               href="#home"
               className="text-lg font-semibold tracking-tight text-violet-400 hover:text-violet-300"
             >
-              Muhammad Munawwar Anwar
+              {profile.name}
             </a>
           </div>
 
@@ -117,21 +120,21 @@ export default function Navbar() {
           {/* Right: icons */}
           <div className="justify-self-end flex items-center gap-2">
             <a
-              href="#"
+              href={profile.links.github}
               className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
               aria-label="GitHub"
             >
               <IconGithub />
             </a>
             <a
-              href="#"
+              href={profile.links.linkedin}
               className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
               aria-label="LinkedIn"
             >
               <IconLinkedIn />
             </a>
             <a
-              href="mailto:you@example.com"
+              href={profile.links.email}
               className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
               aria-label="Email"
             >

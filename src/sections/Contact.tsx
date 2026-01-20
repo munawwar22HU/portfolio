@@ -133,7 +133,7 @@ export default function Contact() {
               <Item
                 icon={<IconPin />}
                 label={contact.info.locationLabel}
-                text={profile.locationPill}
+                text={contact.info.locationText}
               />
             </div>
           </ContactCard>

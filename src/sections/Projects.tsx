@@ -25,6 +25,15 @@ function IconFilter() {
   );
 }
 
+function IconGithub() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 .5C5.73.5.75 5.72.75 12.2c0 5.2 3.44 9.62 8.2 11.18.6.12.82-.27.82-.58v-2.04c-3.34.75-4.04-1.47-4.04-1.47-.55-1.43-1.35-1.81-1.35-1.81-1.1-.78.08-.76.08-.76 1.22.09 1.86 1.27 1.86 1.27 1.08 1.9 2.84 1.35 3.53 1.03.11-.81.42-1.35.77-1.66-2.66-.31-5.46-1.36-5.46-6.05 0-1.34.46-2.44 1.23-3.3-.13-.31-.54-1.58.12-3.29 0 0 1-.33 3.3 1.26.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.3-1.59 3.3-1.26 3.3-1.26.66 1.71.25 2.98.12 3.29.77.86 1.23 1.96 1.23 3.3 0 4.7-2.8 5.73-5.47 6.04.43.38.82 1.13.82 2.29v3.39c0 .32.22.71.83.58 4.75-1.56 8.19-5.98 8.19-11.18C23.25 5.72 18.27.5 12 .5z" />
+    </svg>
+  );
+}
+
+
 export default function Projects() {
   const [active, setActive] = useState<(typeof projectFilters)[number]>("All");
   const [selected, setSelected] = useState<Project | null>(null);
@@ -93,7 +102,17 @@ export default function Projects() {
                   {p.tags.map((t) => (
                     <Tag key={t}>{t}</Tag>
                   ))}
-                </div>
+
+                 <a
+                  href={p.detail.github}
+                  className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
+                  aria-label="GitHub"
+                >
+                  <IconGithub />
+                </a>
+              </div>
+
+
 
                 {/* CTA */}
                 <button
@@ -160,19 +179,7 @@ export default function Projects() {
               </div>
             </div>
 
-            {selected.detail.links?.length ? (
-              <div className="flex flex-wrap gap-3">
-                {selected.detail.links.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    className="text-sm text-zinc-200 underline decoration-white/15 underline-offset-4 hover:text-white"
-                  >
-                    {l.label}
-                  </a>
-                ))}
-              </div>
-            ) : null}
+           
           </div>
         ) : null}
       </Modal>

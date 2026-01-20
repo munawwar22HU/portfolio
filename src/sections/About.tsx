@@ -15,7 +15,7 @@ export default function AboutSection() {
         </div>
 
         {/* 2) Work Experience */}
-        <div className="mt-24">
+        <div id="experience" className="mt-24">
            <h3 className="text-center text-5xl font-semibold tracking-tight text-white sm:text-6xl">
             Work Experience
           </h3>
@@ -31,7 +31,7 @@ export default function AboutSection() {
         </div>
 
         {/* 4) Education */}
-        <div className="mt-24">
+        <div id="education" className="mt-24">
           <h3 className="text-center text-5xl font-semibold tracking-tight text-white sm:text-6xl">
             Education
           </h3>
