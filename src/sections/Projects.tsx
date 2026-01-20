@@ -146,18 +146,15 @@ export default function Projects() {
                     </div>
 
                     {/* Summary */}
-                    <p className="text-sm text-zinc-300 leading-relaxed line-clamp-3 mb-4 break-words overflow-hidden">
+                    <p className="text-sm text-zinc-300 leading-relaxed mb-4 break-words">
                       {p.summary}
                     </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-5">
-                      {p.detail.stack.slice(0, 3).map((s) => (
+                      {p.detail.stack.map((s) => (
                         <Tag key={s}>{s}</Tag>
                       ))}
-                      {p.detail.stack.length > 3 && (
-                        <span className="pill text-xs">+{p.detail.stack.length - 3}</span>
-                      )}
                     </div>
 
                     {/* Actions */}
