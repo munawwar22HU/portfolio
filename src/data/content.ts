@@ -132,10 +132,11 @@ export type Project = {
   tags: Exclude<ProjectTag, "All">[];
   detail: {
     problem: string;
+    github: string;
     approach: string[];
     results: string[];
     stack: string[];
-    links: { label: string; href: string }[];
+    
   };
 };
 
@@ -268,7 +269,7 @@ export const projects: Project[] = [
     detail: {
       problem:
         "Detect illicit cryptocurrency transactions by modeling blockchain data as graphs and evaluating whether graph-based learning methods outperform traditional machine learning under class imbalance.",
-      github: "",
+      github: "github.com/munawwar22HU/Graph-Based-Fraud-Detection-in-Cryptocurrency-Networks",
       approach: [
         "Formulated fraud detection as a binary node classification problem on transaction graphs.",
         "Analyzed Elliptic and Ethereum datasets using both transactional features and graph structural features.",
@@ -302,7 +303,7 @@ export const projects: Project[] = [
     "tags": ["Machine Learning", "ETL"],
     "detail": {
       "problem": "Detect camouflaged animals that visually blend into their environment, a challenging object detection task due to low foreground–background contrast and limited annotated data.",
-      "github": "",
+      "github": "github.com/munawwar22HU/Camouflaged-Animal-Detection-Using-YOLOv5",
       "approach": [
         "Merged COD10K and MoCA datasets into a unified dataset of 12,683 RGB images spanning 126 animal categories.",
         "Converted segmentation masks to bounding boxes using minimum enclosure methods and standardized annotations into YOLO format.",
@@ -334,7 +335,7 @@ export const projects: Project[] = [
     "tags": ["Machine Learning"],
     "detail": {
       "problem": "Automate the generation of textile patterns using deep generative models to reduce manual design effort and explore culturally inspired fabric design synthesis.",
-      "github": "",
+      "github": "github.com/munawwar22HU/Textile-Design-Generation-Using-GANs",
       "approach": [
         "Collected and augmented a textile dataset containing approximately 15,000 fabric images across six pattern categories.",
         "Implemented and compared DCGAN, StyleGAN, and Variational Autoencoder (VAE) architectures for image generation.",
