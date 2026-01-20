@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import Section from "@/components/Section";
 import Tag from "@/components/Tag";
 import Modal from "@/components/Modal";
 import { projects, projectFilters, type Project } from "@/data/content";
+import { motion, useInView } from "framer-motion";
 
 function IconFilter() {
   return (
@@ -41,6 +42,10 @@ function IconGithub() {
 export default function Projects() {
   const [active, setActive] = useState<(typeof projectFilters)[number]>("All");
   const [selected, setSelected] = useState<Project | null>(null);
+  const sectionRef = useRef(null);
+  const gridRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-50px" });
+  const gridInView = useInView(gridRef, { once: true, margin: "-50px" });
 
   const filtered = useMemo(() => {
     if (active === "All") return projects;
@@ -54,103 +59,139 @@ export default function Projects() {
       subtitle="A showcase of projects demonstrating machine learning, visualization, and end-to-end pipeline development."
       align="center"
     >
-      {/* Filters */}
-      <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5">
-          <IconFilter />
-        </span>
+      <div ref={sectionRef}>
+        {/* Filters */}
+        <motion.div
+          className="mb-12 flex flex-wrap items-center justify-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
+            <IconFilter />
+          </span>
 
-        {projectFilters.map((t) => {
-          const isActive = active === t;
-          return (
-            <button
-              key={t}
-              onClick={() => setActive(t)}
-              className={[
-                "rounded-full px-3 py-1 text-xs transition",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
-                isActive
-                  ? "bg-white text-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.35)]"
-                  : "border border-white/10 bg-white/5 text-zinc-200 hover:bg-white/10",
-              ].join(" ")}
+          {projectFilters.map((t) => {
+            const isActive = active === t;
+            return (
+              <motion.button
+                key={t}
+                onClick={() => setActive(t)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={[
+                  "rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/50",
+                  isActive
+                    ? "bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/30"
+                    : "border border-violet-400/20 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20 hover:border-violet-400/40 hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]",
+                ].join(" ")}
+              >
+                {t}
+              </motion.button>
+            );
+          })}
+        </motion.div>
+
+        {/* Grid */}
+        <div ref={gridRef} className="mx-auto max-w-6xl">
+          {filtered.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-zinc-400">No projects found for this filter.</p>
+            </div>
+          ) : (
+            <motion.div
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              initial="hidden"
+              animate={gridInView ? "visible" : "visible"}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.08,
+                  },
+                },
+              }}
             >
-              {t}
-            </button>
-          );
-        })}
-      </div>
-      {/* Grid */}
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <article key={p.id} className="premium-card premium-card-hover">
-              <div className="relative p-6">
-                {/* Header */}
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-2xl">{p.icon}</div>
-                    <h3 className="mt-3 text-base font-semibold text-white leading-snug">
-                      {p.title}
-                    </h3>
-                    <p className="mt-1 text-xs text-zinc-400">{p.date}</p>
-                  </div>
-                </div>
+              {filtered.map((p, index) => (
+                <motion.article
+                  key={p.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.4,
+                        delay: index * 0.08,
+                      },
+                    },
+                  }}
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  className="premium-card premium-card-hover group overflow-hidden"
+                >
+                  <div className="relative p-5">
+                    {/* Header */}
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex-1 min-w-0">
+                        <div className="text-2xl mb-2 transition-transform duration-200 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                          {p.icon}
+                        </div>
+                        <h3 className="text-base font-bold bg-gradient-to-r from-white to-violet-200 bg-clip-text text-transparent leading-snug break-words">
+                          {p.title}
+                        </h3>
+                        <p className="mt-1 text-xs text-violet-300/70 font-medium whitespace-nowrap">{p.date}</p>
+                      </div>
+                    </div>
 
-                {/* Summary */}
-                <p className="mt-4 text-base text-zinc-300 leading-relaxed">
-                  {p.summary}
-                </p>
+                    {/* Summary */}
+                    <p className="text-sm text-zinc-300 leading-relaxed line-clamp-3 mb-4 break-words overflow-hidden">
+                      {p.summary}
+                    </p>
 
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {p.detail.stack.map((s) => (
-                    <Tag key={s}>{s}</Tag>
-                  ))}
-                </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {p.detail.stack.slice(0, 3).map((s) => (
+                        <Tag key={s}>{s}</Tag>
+                      ))}
+                      {p.detail.stack.length > 3 && (
+                        <span className="pill text-xs">+{p.detail.stack.length - 3}</span>
+                      )}
+                    </div>
 
-                <div className="mt-6 flex items-center gap-3">
-                  {/* View Details */}
-                  <button
-                    onClick={() => setSelected(p)}
-                    className="
-      flex-1 h-10 rounded-lg
-      bg-gradient-to-r from-violet-500 to-indigo-500
-      text-sm font-medium text-white
-      transition-all
-      hover:from-violet-400 hover:to-indigo-400
-      hover:shadow-[0_0_30px_rgba(139,92,246,0.35)]
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/50
-    "
+                    {/* Actions */}
+                  <div className="flex items-center gap-2.5">
+                    {/* View Details */}
+                    <motion.button
+                      onClick={() => setSelected(p)}
+                    whileHover={{ scale: 1.01, y: -1 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="flex-1 h-9 rounded-lg bg-gradient-to-r from-violet-500 to-indigo-500 text-xs font-semibold text-white transition-all duration-200 hover:from-violet-400 hover:to-indigo-400 hover:shadow-[0_0_25px_rgba(139,92,246,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/40"
                   >
                     View Details
-                  </button>
+                  </motion.button>
 
                   {/* GitHub */}
                   {p.detail.github && (
-                    <a
+                    <motion.a
                       href={p.detail.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="GitHub"
-                      className="
-        h-10 w-10
-        inline-flex items-center justify-center
-        rounded-lg
-        border border-white/10
-        bg-white/5
-        text-zinc-300
-        transition-all
-        hover:bg-white/10 hover:text-white
-        hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30
-      "
+                      aria-label="GitHub Repository"
+                      whileHover={{ scale: 1.05, y: -1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="h-9 w-9 inline-flex items-center justify-center rounded-lg border border-white/8 bg-white/[0.03] text-zinc-300 transition-all duration-200 hover:bg-white/[0.06] hover:text-white hover:border-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/25"
                     >
                       <IconGithub />
-                    </a>
+                    </motion.a>
                   )}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </motion.article>
+              ))}
+            </motion.div>
+          )}
         </div>
       </div>
 

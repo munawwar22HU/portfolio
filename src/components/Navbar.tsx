@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import {profile} from "@/data/content";
+import { profile } from "@/data/content";
 import clsx from "clsx";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
-  // {id: "experience", label: "Experience" },
-  // { id: "education", label: "Education" },
   { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ] as const;
@@ -38,8 +37,25 @@ function IconMail() {
   );
 }
 
+function IconMenu() {
+  return (
+    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  );
+}
+
+function IconClose() {
+  return (
+    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   const [active, setActive] = useState<(typeof NAV)[number]["id"]>("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const ids = useMemo(() => NAV.map((n) => n.id), []);
 
   useEffect(() => {
@@ -75,83 +91,156 @@ export default function Navbar() {
   }, [ids]);
 
   const scrollTo = (id: string) => {
+    setMobileMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="border-b border-white/10 bg-zinc-950/70 backdrop-blur">
-        {/* 3-column grid to keep center nav truly centered */}
-        <div className="mx-auto grid max-w-6xl grid-cols-3 items-center px-4 py-3 sm:px-6 lg:px-8">
+      <div className="border-b border-white/10 bg-zinc-950/80 backdrop-blur-md supports-[backdrop-filter]:bg-zinc-950/60">
+        <div className="mx-auto grid max-w-6xl grid-cols-3 items-center px-4 py-3.5 sm:px-6 lg:px-8">
           {/* Left: brand */}
           <div className="justify-self-start">
             <a
               href="#home"
-              className="text-lg font-semibold tracking-tight text-violet-400 hover:text-violet-300"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("home");
+              }}
+              className="text-lg font-semibold tracking-tight bg-gradient-to-r from-violet-400 via-purple-400 to-blue-400 bg-clip-text text-transparent hover:from-violet-300 hover:via-purple-300 hover:to-blue-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-violet-400/50 rounded"
             >
               {profile.name}
             </a>
           </div>
 
           {/* Center: nav pills */}
-          <div className="hidden justify-self-center sm:block">
-            <nav className="flex items-center gap-2" aria-label="Primary">
-              {NAV.map((n) => {
-                const isActive = active === n.id;
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => scrollTo(n.id)}
-                    className={clsx(
-                      "rounded-full px-5 py-2.5 text-sm transition duration-200",
-                      isActive
-                        ? "bg-violet-500/15 text-white ring-1 ring-violet-400/25 shadow-[0_0_30px_rgba(168,85,247,0.18)]"
-                        : "text-zinc-300 hover:bg-white/5 hover:text-white"
-                    )}
-                  >
-                    {n.label}
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
+          <nav className="hidden justify-self-center sm:flex items-center gap-2" aria-label="Primary">
+            {NAV.map((n) => {
+              const isActive = active === n.id;
+              return (
+                <button
+                  key={n.id}
+                  type="button"
+                  onClick={() => scrollTo(n.id)}
+                  className={clsx(
+                    "rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200",
+                    "focus:outline-none focus:ring-2 focus:ring-violet-400/50 focus:ring-offset-2 focus:ring-offset-zinc-950",
+                    isActive
+                      ? "bg-gradient-to-r from-violet-500/20 to-purple-500/20 text-white ring-1 ring-violet-400/30 shadow-[0_0_25px_rgba(168,85,247,0.25)]"
+                      : "text-zinc-300 hover:bg-violet-500/10 hover:text-white hover:ring-1 hover:ring-violet-400/20"
+                  )}
+                >
+                  {n.label}
+                </button>
+              );
+            })}
+          </nav>
 
-          {/* Right: icons */}
+          {/* Right: icons + mobile menu */}
           <div className="justify-self-end flex items-center gap-2">
-            <a
-              href={profile.links.github}
-              className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
-              aria-label="GitHub"
-            >
-              <IconGithub />
-            </a>
-            <a
-              href={profile.links.linkedin}
-              className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
-              aria-label="LinkedIn"
-            >
-              <IconLinkedIn />
-            </a>
-            <a
-              href={profile.links.email}
-              className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
-              aria-label="Email"
-            >
-              <IconMail />
-            </a>
+            {/* Desktop social icons */}
+            <div className="hidden sm:flex items-center gap-1">
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/30"
+                aria-label="GitHub Profile"
+              >
+                <IconGithub />
+              </a>
+              <a
+                href={profile.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/30"
+                aria-label="LinkedIn Profile"
+              >
+                <IconLinkedIn />
+              </a>
+              <a
+                href={profile.links.email}
+                className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/30"
+                aria-label="Send Email"
+              >
+                <IconMail />
+              </a>
+            </div>
 
-            {/* Mobile: keep minimal for now */}
+            {/* Mobile menu button */}
             <button
               type="button"
-              className="ml-1 inline-flex items-center justify-center rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white sm:hidden"
-              aria-label="Open menu"
-              onClick={() => scrollTo("contact")}
+              className="inline-flex items-center justify-center rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white sm:hidden transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/30"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              <span className="text-sm">Menu</span>
+              {mobileMenuOpen ? <IconClose /> : <IconMenu />}
             </button>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden border-t border-white/10 sm:hidden"
+            >
+              <nav className="flex flex-col px-4 py-4 space-y-2" aria-label="Mobile navigation">
+                {NAV.map((n) => {
+                  const isActive = active === n.id;
+                  return (
+                    <button
+                      key={n.id}
+                      type="button"
+                      onClick={() => scrollTo(n.id)}
+                      className={clsx(
+                        "rounded-lg px-4 py-3 text-left text-base font-medium transition-all duration-200",
+                        "focus:outline-none focus:ring-2 focus:ring-violet-400/50",
+                        isActive
+                          ? "bg-violet-500/15 text-white"
+                          : "text-zinc-300 hover:bg-white/5 hover:text-white"
+                      )}
+                    >
+                      {n.label}
+                    </button>
+                  );
+                })}
+                <div className="flex items-center gap-3 pt-2 border-t border-white/10 mt-2">
+                  <a
+                    href={profile.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white transition-colors"
+                    aria-label="GitHub"
+                  >
+                    <IconGithub />
+                  </a>
+                  <a
+                    href={profile.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <IconLinkedIn />
+                  </a>
+                  <a
+                    href={profile.links.email}
+                    className="rounded-lg p-2 text-zinc-300 hover:bg-white/5 hover:text-white transition-colors"
+                    aria-label="Email"
+                  >
+                    <IconMail />
+                  </a>
+                </div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

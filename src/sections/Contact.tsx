@@ -1,6 +1,8 @@
 "use client";
 
 import { contact, profile } from "@/data/content";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 function IconMail() {
   return (
@@ -57,12 +59,12 @@ function IconLinkedIn() {
 
 function ContactCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/35 p-7 sm:p-8 backdrop-blur">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_380px_at_85%_50%,rgba(124,58,237,0.22),rgba(124,58,237,0.06),transparent_65%)]" />
-      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5" />
+    <div className="relative overflow-hidden rounded-xl border border-violet-400/20 bg-gradient-to-br from-white/[0.03] to-violet-500/5 p-6 sm:p-7 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/40 hover:bg-gradient-to-br hover:from-white/[0.05] hover:to-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20 group">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(800px_350px_at_85%_50%,rgba(124,58,237,0.2),rgba(59,130,246,0.12),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-violet-400/10" />
       <div className="relative">
-        <h3 className="text-base font-semibold text-white">{title}</h3>
-        <div className="mt-6">{children}</div>
+        <h3 className="text-sm font-bold bg-gradient-to-r from-violet-300 to-blue-300 bg-clip-text text-transparent uppercase tracking-wide mb-5">{title}</h3>
+        <div>{children}</div>
       </div>
     </div>
   );
@@ -80,89 +82,122 @@ function Item({
   href?: string;
 }) {
   return (
-    <div className="flex items-start gap-4">
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/10 text-violet-300 ring-1 ring-violet-400/20">
+    <motion.div
+      className="flex items-start gap-4"
+      whileHover={{ x: 4 }}
+      transition={{ duration: 0.2 }}
+    >
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500/25 to-blue-500/25 text-violet-300 ring-1 ring-violet-400/20 shadow-[0_0_15px_rgba(168,85,247,0.2)] transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]">
         {icon}
       </div>
-      <div>
-        <p className="text-sm font-semibold text-zinc-200">{label}</p>
+      <div className="min-w-0">
+        <p className="text-xs font-semibold text-zinc-300 uppercase tracking-wide">{label}</p>
         {href ? (
           <a
             href={href}
-            className="mt-1 block text-sm text-zinc-400 underline decoration-white/15 underline-offset-4 hover:text-zinc-200"
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="mt-1 block text-sm text-zinc-300 underline decoration-violet-400/30 underline-offset-4 transition-colors duration-200 hover:text-violet-200 hover:decoration-violet-400/60"
           >
             {text}
           </a>
         ) : (
-          <p className="mt-1 text-sm text-zinc-400">{text}</p>
+          <p className="mt-1 text-sm text-zinc-400 break-words">{text}</p>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function Contact() {
-  const emailHref = profile.links.email; 
+  const emailHref = profile.links.email;
   const githubHref = profile.links.github;
   const linkedinHref = profile.links.linkedin;
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
     <section id="contact" className="scroll-mt-24 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="text-center">
-          <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl">Get In Touch</h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+      <div ref={sectionRef} className="mx-auto max-w-6xl px-6 sm:px-8">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Get In Touch
+          </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-zinc-300 sm:text-lg">
             {contact.blurb}
           </p>
-        </div>
+        </motion.div>
 
         <div className="mx-auto mt-12 max-w-4xl space-y-6">
-          <ContactCard title="Contact Information">
-            <div className="grid gap-6 sm:grid-cols-3">
-              <Item
-                icon={<IconMail />}
-                label={contact.info.emailLabel}
-                text={contact.info.emailText}
-                href={emailHref}
-              />
-              <Item
-                icon={<IconPhone />}
-                label={contact.info.phoneLabel}
-                text={contact.info.phoneText}
-              />
-              <Item
-                icon={<IconPin />}
-                label={contact.info.locationLabel}
-                text={contact.info.locationText}
-              />
-            </div>
-          </ContactCard>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <ContactCard title="Contact Information">
+              <div className="grid gap-6 sm:grid-cols-3">
+                <Item
+                  icon={<IconMail />}
+                  label={contact.info.emailLabel}
+                  text={contact.info.emailText}
+                  href={emailHref}
+                />
+                <Item
+                  icon={<IconPhone />}
+                  label={contact.info.phoneLabel}
+                  text={contact.info.phoneText}
+                />
+                <Item
+                  icon={<IconPin />}
+                  label={contact.info.locationLabel}
+                  text={contact.info.locationText}
+                />
+              </div>
+            </ContactCard>
+          </motion.div>
 
-          <ContactCard title="Social Links">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <Item
-                icon={<IconGithub />}
-                label={contact.social.githubLabel}
-                text={contact.social.githubText}
-                href={githubHref}
-              />
-              <Item
-                icon={<IconLinkedIn />}
-                label={contact.social.linkedinLabel}
-                text={contact.social.linkedinText}
-                href={linkedinHref}
-              />
-            </div>
-          </ContactCard>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <ContactCard title="Social Links">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <Item
+                  icon={<IconGithub />}
+                  label={contact.social.githubLabel}
+                  text={contact.social.githubText}
+                  href={githubHref}
+                />
+                <Item
+                  icon={<IconLinkedIn />}
+                  label={contact.social.linkedinLabel}
+                  text={contact.social.linkedinText}
+                  href={linkedinHref}
+                />
+              </div>
+            </ContactCard>
+          </motion.div>
 
-          <ContactCard title="Quick Response">
-            <p className="text-sm text-zinc-400">{contact.quick[0]}</p>
-            <div className="mt-5 text-sm text-zinc-400">
-              <p className="font-semibold text-zinc-200">Best times to reach me:</p>
-              <p className="mt-1">{contact.quick[1]}</p>
-              <p className="mt-2">{contact.responseTimeText}</p>
-            </div>
-          </ContactCard>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <ContactCard title="Quick Response">
+              <p className="text-sm text-zinc-300 leading-relaxed">{contact.quick[0]}</p>
+              <div className="mt-5 text-sm text-zinc-300">
+                <p className="font-semibold text-white mb-2">Best times to reach me:</p>
+                <p className="text-zinc-400">{contact.quick[1]}</p>
+                <p className="mt-2 text-zinc-400">{contact.responseTimeText}</p>
+              </div>
+            </ContactCard>
+          </motion.div>
         </div>
       </div>
     </section>

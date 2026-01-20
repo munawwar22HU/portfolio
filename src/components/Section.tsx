@@ -12,14 +12,14 @@ export default function Section({
   align?: "left" | "center";
 }) {
   return (
-    <section id={id} className="section">
+    <section id={id} className="section scroll-mt-24">
       <div className={align === "center" ? "text-center" : ""}>
-        <div className="mb-6">
+        <div className="mb-8 sm:mb-12">
           <h2
             className={
               align === "center"
-                ? "text-5xl font-semibold tracking-tight text-white sm:text-6xl"
-                : "section-title"
+                ? "text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+                : "section-title text-white"
             }
           >
             {title}
@@ -29,7 +29,7 @@ export default function Section({
             <p
               className={
                 align === "center"
-                  ? "mx-auto mt-6 max-w-3xl text-base leading-relaxed text-zinc-400 sm:text-lg"
+                  ? "mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg"
                   : "section-subtitle"
               }
             >

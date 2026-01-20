@@ -33,12 +33,12 @@ export default function Modal({
             aria-modal="true"
           >
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-              <h3 className="text-sm font-semibold">{title}</h3>
+              <h3 className="text-sm font-semibold text-white">{title}</h3>
               <button onClick={onClose} className="rounded-lg px-3 py-1 text-sm text-zinc-300 hover:bg-white/5 hover:text-white">
                 Close
               </button>
             </div>
-            <div className="p-5">{children}</div>
+            <div className="p-5 text-zinc-300">{children}</div>
           </motion.div>
         </motion.div>
       ) : null}
