@@ -35,10 +35,9 @@ export const experience = [
     dates: "June 2025 – August 2025",
     location: "United States",
     bullets: [
-      "Migrated two Oracle stored procedures to Azure SQL, improving execution time by 40% and enabling faster financial reporting through query rewrites and optimized indexing strategies.",
-      "Reduced Oracle–Azure SQL discrepancies to under 5% by identifying mismatches with Python scripts and resolving data alignment issues through systematic SQL debugging.",
-      "Built a 735 Q&A synthetic dataset from 30 SOPs to fine-tune an internal chatbot, ensuring accuracy with company terminology and compliance with legal standards.",
-      "Developed an LLM chatbot prototype to handle SOP and work instruction queries, improving operational efficiency by reducing manual search dependence using Azure AI Foundry’s o4-mini model.",
+      "Migrated and optimized Oracle stored procedures from Oracle  Fusion to Azure SQL, improving performance by 50% from 1 hour to 30 minutes and reducing FP&A close-cycle delays through PL/SQL-to-T-SQL conversion, query rewrites, and indexing strategies.",
+      "Validated 200K financial records during Oracle-to-Azure SQL migration, reducing data discrepancies from 35% to under 5% and enabling production deployment for FP&A reporting through Python validation scripts and systematic SQL mismatch resolution",
+      "Developed automated pipeline for ABM operational documentation, generating 735 Q&A pairs from 30 unstructured PDFs into structured training data and enabling future Azure OpenAI chatbot training through PDF text extraction, document chunking, and GPT-4o-mini prompt engineering.",
     ],
   },
   {
@@ -47,9 +46,9 @@ export const experience = [
     dates: " July 2022 – July 2024",
     location: "Pakistan",
     bullets: [
-      "Led weekly Python and SQL labs for 30 students, improving assignment performance by 15% and deepening comprehension in Deep Learning, DSA, and Database Systems.",
-      "Redesigned 34 assignments and labs across multiple courses, cutting debugging support requests by 20% and reinforcing applied understanding through implementation-based coursework.",
-      "Mentored 10 research projects in Deep Learning and LLMs, guiding methodology and publication processes that led to two ICETST 2024 paper acceptances.",
+      "Designed 34 Python and SQL lab assignments and exercises, reducing TA workload from 8 to 4 hours per week and lowering instructional support costs across 100+ students through structured documentation, modular code templates, and iterative design refinements.",
+      "Facilitated weekly 3-hour Python and SQL labs for 30+ students, achieving 95%+ lab assignment completion rates and preparing students for advanced coursework and technical projects through hands-on coding guidance, troubleshooting, and personalized feedback.",
+      "Mentored 10 student research projects in Deep Learning as Research Assistant across two course offerings, resulting in two first-time IEEE conference paper acceptances and establishing a reusable research pipeline for future student cohorts through weekly checkpoint meetings, Python code reviews, experimental methodology guidance, technical debugging, and iterative documentation feedback.",
     ],
   },
   {
@@ -58,10 +57,7 @@ export const experience = [
     dates: "June 2021 – May 2022",
     location: "Pakistan",
     bullets: [
-      "Built a full-stack web app for Ujala School replacing manual records, improving data access and reporting for daily operations.",
-      "Developed backend with Node.js, ExpressJS, and MongoDB, creating modular APIs for students, teachers, payments, and donations to streamline data retrieval.",
-      "Implemented JWT authentication and role-based authorization, improving data protection and user-level access control.",
-      "Designed ReactJS-based interfaces and deployed the system for 30–40 users, supporting real-world nonprofit workflows.",
+      "Built full-stack management system for special education NGO, digitizing student/teacher records, fee tracking, sponsorships, and certificate workflows into centralized database and replacing manual paper-based administrative processes with web-based CRUD interface through MERN stack with MongoDB, role-based authentication, and RESTful API design.",
     ],
   },
   {
@@ -70,9 +66,9 @@ export const experience = [
     dates: "July 2021 – August 2021",
     location: "Pakistan",
     bullets: [
-      "Processed 100K+ daily Trend Micro syslog records, classifying security events and field structures to enhance ingestion design for data-driven dashboards.",
-      "Transformed parsed syslog data into an MS SQL database using Python-based ETL, enabling efficient querying of high-volume security events for analysis.",
-      "Developed a prototype Power BI dashboard to visualize categorized events and trends, helping leadership assess antivirus activity and feasibility of centralized monitoring.",
+      "Parsed 100K+ daily unstructured Trend Micro syslog records into six CSV files by security event category, replacing vendor-limited reports with structured datasets and enabling custom analysis of firewall, malware, and monitoring events through Python-based signature classification.",
+      "Built automated Python ETL pipeline loading parsed security event CSV files into an MS SQL database daily, replacing manual file searches with instant SQL queries and enabling cross-category trend analysis through relational data modeling and scheduled batch processing.",
+      "Developed Power BI dashboard connected to SQL security database, automating daily security reporting for IT leadership to monitor threats, investigate incidents, and inform antivirus security policy decisions through interactive visualizations and event filtering.",
     ],
   },
 ];
