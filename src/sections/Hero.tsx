@@ -114,9 +114,9 @@ export default function Hero() {
             <span className="block text-5xl font-bold text-white sm:text-6xl md:text-7xl lg:text-8xl">
               {profile.headlinePrimary}
             </span>
-            <span className="mt-2 block text-5xl font-bold text-violet-400 sm:text-6xl md:text-7xl lg:text-8xl">
+            {/* <span className="mt-2 block text-5xl font-bold text-violet-400 sm:text-6xl md:text-7xl lg:text-8xl">
               {profile.headlineSecondary}
-            </span>
+            </span> */}
           </motion.h1>
 
           {/* Tagline */}

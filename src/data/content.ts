@@ -1,16 +1,15 @@
 export const profile = {
   name: "Muhammad Munawwar Anwar",
   locationPill: "Atlanta, GA (Open to Relocate)",
-  headlinePrimary: "Data Analyst",
-  headlineSecondary: "Data Engineer",
-  tagline: "Python & SQL Specialist",
-  subtag: "Transforming Complex Data into Actionable Insights",
+  headlinePrimary: "Entry-Level Data Analyst",
+  tagline: "Python, SQL, & Power BI",
+  subtag: "Turning Raw Data into Clear Business Insights",
   skillsPills: [
-    "Data Analytics",
-    "Data Engineering",
+    "Data Analysis",
     "SQL",
     "Python",
-    "Cloud Data Platforms",
+    "Microsoft Power BI",
+    "Tableau",
   ],
   metrics: [
     { value: "3+", label: "Years Experience" },
@@ -26,7 +25,7 @@ export const profile = {
 };
 
 export const about = {
-  text: "Data Analyst and Computer Science graduate student with over three years of experience in data processing, database management, and analytics workflows, skilled in SQL and Python for transforming complex datasets into actionable insights.",
+  text: "Data Analyst with 3+ years of experience working across analytics, data pipelines, and reporting workflows in finance, IT, and academic environments. Skilled in Python, SQL, Power BI, and Excel to support data-driven decision-making and operational insights.",
 };
 
 export const experience = [
@@ -80,19 +79,34 @@ export const experience = [
 
 export const skillGroups = [
   {
-    title: "Programming & Query Languages",
+    title: "Programming Languages",
     icon: "💻",
-    items: ["Python", "SQL", "JavaScript", "TypeScript", "C++"],
+    items: ["Python", "SQL", "R", "JavaScript", "TypeScript", "C++"],
   },
   {
-    title: "Databases & Cloud Platforms",
+    title: "Data Analysis Tools",
+    icon: "📈",
+    items: ["Excel", "Power BI", "Tableau"],
+  },
+  {
+    title: "Databases",
     icon: "🗄️",
-    items: ["PostgreSQL", "MS SQL Server", "Azure SQL Database", "MongoDB"],
+    items: ["PostgreSQL", "MS SQL Server", "Azure SQL Database", "MongoDB", "SQLite"],
+  },
+  {
+    title: "Data Processing",
+    icon: "⚙️",
+    items: ["Data Cleaning", "Data Validation", "Data Ingestion", "Data Migrations"],
+  },
+  {
+    title: "Statistical Analysis",
+    icon: "🔎",
+    items: ["Descriptive Statistics","Hypothesis Testing","Regression Analysis"],
   },
   {
     title: "Data Visualization",
     icon: "📊",
-    items: ["Power BI", "Matplotlib", "D3.js"],
+    items: ["Matplotlib", "D3.js"],
   },
   {
     title: "Machine Learning & AI",
