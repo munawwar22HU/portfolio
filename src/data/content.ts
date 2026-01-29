@@ -165,7 +165,7 @@ export const projects: Project[] = [
     title: "NYC Yellow Taxi Analytics Platform",
     date: "August 2025 – December 2025",
     summary:
-      "Built a PostgreSQL-backed analytics platform processing 20M+ NYC Yellow Taxi trips from Jan–Aug 2025 to analyze demand, fare patterns, and vendor performance.",
+      "Built full-stack analytics platform ingesting 20M+ NYC taxi trip records from January to August 2025 into PostgreSQL, implementing five materialized views and eleven strategic indexes to enable interactive analysis of fare trends, peak demand patterns, and vendor performance.",
     tags: ["SQL", "ETL", "Visualization"],
     detail: {
       problem:
@@ -189,7 +189,7 @@ export const projects: Project[] = [
     title: "Gender Wage Gap Scrollytelling",
     date: "Jan 2025 – May 2025",
     summary:
-      "Designed an interactive scrollytelling visualization analyzing 50,000 wage records from 1981–2013 to surface gender pay disparities across demographics using D3.js.",
+      "Built wage visualization platform processing 344K records, creating multi-dimensional aggregations across year, age, occupation, race, and education, and delivering comparative gender and racial pay-gap insights through an interactive scrollytelling interface using Python and D3.js.",
     tags: ["Visualization"],
     detail: {
       problem:
