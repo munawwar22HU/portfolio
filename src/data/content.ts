@@ -3,7 +3,7 @@ export const profile = {
   locationPill: "Atlanta, GA (Open to Relocate)",
   headlinePrimary: "Entry-Level Data Analyst",
   tagline: "Python, SQL, & Power BI",
-  subtag: "Turning Raw Data into Clear Business Insights",
+  subtag: "M.S. Computer Science, Emory University | Open to Opportunities",
   skillsPills: [
     "Data Analysis",
     "SQL",
@@ -12,50 +12,49 @@ export const profile = {
     "Tableau",
   ],
   metrics: [
-    { value: "3+", label: "Years Experience" },
-    { value: "95%", label: "Reporting Accuracy" },
-    { value: "100K+", label: "Records Processed" },
+    { value: "1+", label: "Years Experience" },
+    { value: "200K+", label: "Records Validated" },
+    { value: "20M+", label: "Records Processed" },
   ],
   links: {
     github: "https://github.com/munawwar22HU",
-    linkedin: "https://www.linkedin.com/in/munawwar-anwar/",
+    linkedin: "https://www.linkedin.com/in/manwar99/",
     email: "mailto:munawwaradam@gmail.com",
     resumePdf: "/resume.pdf",
   },
 };
 
 export const about = {
-  text: "Data Analyst with 3+ years of experience working across analytics, data pipelines, and reporting workflows in finance, IT, and academic environments. Skilled in Python, SQL, Power BI, and Excel to support data-driven decision-making and operational insights.",
+  text: "M.S. Computer Science graduate from Emory University with hands-on experience in SQL query optimization, Python-based data validation, and ETL pipeline development. Skilled in translating raw data into actionable insights through Power BI, Tableau, and PostgreSQL. Comfortable working across the full analytics stack from data ingestion to business-facing reporting.",
 };
-
 export const experience = [
   {
     company: "ABM Industries",
     role: "Data Analyst Intern",
     dates: "June 2025 – August 2025",
-    location: "United States",
+    location: "Atlanta, GA",
     bullets: [
-      "Migrated and optimized Oracle stored procedures from Oracle  Fusion to Azure SQL, improving performance by 50% from 1 hour to 30 minutes and reducing FP&A close-cycle delays through PL/SQL-to-T-SQL conversion, query rewrites, and indexing strategies.",
-      "Validated 200K financial records during Oracle-to-Azure SQL migration, reducing data discrepancies from 35% to under 5% and enabling production deployment for FP&A reporting through Python validation scripts and systematic SQL mismatch resolution",
-      "Developed automated pipeline for ABM operational documentation, generating 735 Q&A pairs from 30 unstructured PDFs into structured training data and enabling future Azure OpenAI chatbot training through PDF text extraction, document chunking, and GPT-4o-mini prompt engineering.",
+      "Migrated 2 FP&A Oracle Fusion queries to Azure SQL, cutting runtime from 60 to 30 minutes and saving 3 hours per close cycle, by converting PL/SQL to T-SQL and applying indexing optimization.",
+      "Validated 200K financial records, reducing mismatches from 12K to 1.5K and improving executive reporting accuracy, by writing Python validation scripts and SQL reconciliation logic during Oracle-to-Azure SQL migration.",
+      "Reduced policy lookup time from 30 minutes to under 5 minutes for operations teams, saving 20 hours monthly, by building an automated Q&A system from 30 SOP documents using Python parsing and Azure OpenAI.",
     ],
   },
   {
     company: "Habib University",
     role: "Research Assistant",
     dates: " July 2022 – July 2024",
-    location: "Pakistan",
+    location: "Karachi, Pakistan",
     bullets: [
-      "Designed 34 Python and SQL lab assignments and exercises, reducing TA workload from 8 to 4 hours per week and lowering instructional support costs across 100+ students through structured documentation, modular code templates, and iterative design refinements.",
-      "Facilitated weekly 3-hour Python and SQL labs for 30+ students, achieving 95%+ lab assignment completion rates and preparing students for advanced coursework and technical projects through hands-on coding guidance, troubleshooting, and personalized feedback.",
-      "Mentored 10 student research projects in Deep Learning as Research Assistant across two course offerings, resulting in two first-time IEEE conference paper acceptances and establishing a reusable research pipeline for future student cohorts through weekly checkpoint meetings, Python code reviews, experimental methodology guidance, technical debugging, and iterative documentation feedback.",
+      "Constructed 34 Python and SQL lab assignments, reducing grading time from 15 to 10 minutes per submission and cutting TA workload from 8 to 4 hours weekly for 100+ students, by developing reusable rubrics.",
+      "Facilitated weekly 3-hour labs for 30+ students, reducing completion time from 120 to 90 minutes and enabling 80%+ in-session completion, through hands-on instruction and personalized debugging support.",
+      "Mentored 10 Deep Learning research projects resulting in 2 IEEE conference acceptances, by providing weekly code reviews and methodology guidance.",
     ],
   },
   {
     company: "Parents Voice Association – UJALA Centre",
     role: "Web Developer (Part-time & Remote)",
     dates: "June 2021 – May 2022",
-    location: "Pakistan",
+    location: "Karachi, Pakistan",
     bullets: [
       "Built full-stack management system for special education NGO, digitizing student/teacher records, fee tracking, sponsorships, and certificate workflows into centralized database and replacing manual paper-based administrative processes with web-based CRUD interface through MERN stack with MongoDB, role-based authentication, and RESTful API design.",
     ],
@@ -64,11 +63,10 @@ export const experience = [
     company: "Ismail Industries Limited",
     role: "IT Intern",
     dates: "July 2021 – August 2021",
-    location: "Pakistan",
+    location: "Karachi, Pakistan",
     bullets: [
-      "Parsed 100K+ daily unstructured Trend Micro syslog records into six CSV files by security event category, replacing vendor-limited reports with structured datasets and enabling custom analysis of firewall, malware, and monitoring events through Python-based signature classification.",
-      "Built automated Python ETL pipeline loading parsed security event CSV files into an MS SQL database daily, replacing manual file searches with instant SQL queries and enabling cross-category trend analysis through relational data modeling and scheduled batch processing.",
-      "Developed Power BI dashboard connected to SQL security database, automating daily security reporting for IT leadership to monitor threats, investigate incidents, and inform antivirus security policy decisions through interactive visualizations and event filtering.",
+      "Streamlined security log analysis, reducing alert review time from 5 hours to 1 hour, by converting 100K+ daily Trend Micro logs into structured CSVs using Python automation and an ETL pipeline into SQL Server.",
+      "Built a Power BI dashboard from SQL Server data, reducing reporting time from 2 hours to 10 minutes and enabling IT leadership to implement timely policy updates through interactive visualizations.",
     ],
   },
 ];
@@ -77,51 +75,58 @@ export const skillGroups = [
   {
     title: "Programming Languages",
     icon: "💻",
-    items: ["Python", "SQL", "R", "JavaScript", "TypeScript", "C++"],
+    items: ["SQL", "Python", "R", "JavaScript"],
   },
   {
-    title: "Data Analysis Tools",
-    icon: "📈",
-    items: ["Excel", "Power BI", "Tableau"],
-  },
-  {
-    title: "Databases",
-    icon: "🗄️",
-    items: ["PostgreSQL", "MS SQL Server", "Azure SQL Database", "MongoDB", "SQLite"],
-  },
-  {
-    title: "Data Processing",
-    icon: "⚙️",
-    items: ["Data Cleaning", "Data Validation", "Data Ingestion", "Data Migrations"],
-  },
-  {
-    title: "Statistical Analysis",
-    icon: "🔎",
-    items: ["Descriptive Statistics","Hypothesis Testing","Regression Analysis"],
+    title: "Python Libraries",
+    icon: "🐍",
+    items: ["Pandas", "NumPy", "Matplotlib", "Scikit-learn"],
   },
   {
     title: "Data Visualization",
     icon: "📊",
-    items: ["Matplotlib", "D3.js"],
+    items: ["Power BI", "Tableau", "D3.js", "Plotly", "Excel (Advanced)"],
   },
   {
-    title: "Machine Learning & AI",
-    icon: "🤖",
-    items: ["TensorFlow", "PyTorch", "Scikit-learn"],
-  },
-  {
-    title: "Software Engineering & Tools",
-    icon: "🛠️",
+    title: "Analytics",
+    icon: "🔎",
     items: [
-      "Node.js",
-      "Express.js",
-      "REST APIs",
-      "JWT",
-      "React",
-      "Git",
-      "GitHub",
-      "VS Code",
+      "KPI Development",
+      "A/B Testing",
+      "Statistical Analysis",
+      "Regression",
+      "Forecasting",
+      "Hypothesis Testing",
     ],
+  },
+  {
+    title: "Data Engineering",
+    icon: "⚙️",
+    items: [
+      "ETL/ELT Pipelines",
+      "Data Modeling",
+      "Data Warehousing",
+      "API Integration",
+    ],
+  },
+  {
+    title: "Databases",
+    icon: "🗄️",
+    items: ["SQL Server", "PostgreSQL", "MySQL", "SQLite", "MongoDB"],
+  },
+  {
+    title: "Cloud",
+    icon: "☁️",
+    items: [
+      "Azure (Azure SQL, Azure OpenAI)",
+      "AWS (S3, Athena, Glue, QuickSight)",
+      "GCP (BigQuery)",
+    ],
+  },
+  {
+    title: "Tools",
+    icon: "🛠️",
+    items: ["Git", "GitHub Actions", "Jupyter Notebook"],
   },
 ];
 
@@ -160,12 +165,44 @@ export const projectFilters: ProjectTag[] = [
 
 export const projects: Project[] = [
   {
+    id: "weather-etl-openweather",
+    icon: "☁️",
+    title: "Weather ETL & Dashboard",
+    date: "2025 – Present",
+    summary:
+      "Eliminated 1.5 hours of daily manual data collection by automating weather ingestion from a public API every 10 minutes into SQLite across 5 cities, using Python and GitHub Actions for scheduling and monitoring.",
+    tags: ["ETL", "Visualization"],
+    detail: {
+      problem:
+        "Create a real-time pipeline to continuously ingest weather data from the OpenWeatherMap API, store it in a queryable database, and provide an interactive dashboard for trend analysis.",
+      github: "https://github.com/munawwar22HU/weather-etl",
+      challenges: [
+        "Designing a reliable ETL pipeline that runs on a schedule using GitHub Actions.",
+        "Handling API rate limits, JSON parsing, error resilience, and idempotent data loads.",
+        "Storing time-series weather data efficiently in SQLite and enabling analytical queries.",
+        "Building an interactive Streamlit dashboard that supports multi-city trend analysis with Plotly charts.",
+      ],
+      outcomes: [
+        "Eliminated 1.5 hours of daily manual data collection across 5 cities.",
+        "Automated weather ingestion every 10 minutes into SQLite using Python and GitHub Actions.",
+      ],
+      stack: [
+        "Python",
+        "SQLite",
+        "GitHub Actions",
+        "Streamlit",
+        "Plotly",
+        "OpenWeatherMap API",
+      ],
+    },
+  },
+  {
     id: "nyc-taxi",
     icon: "🚕",
     title: "NYC Yellow Taxi Analytics Platform",
     date: "August 2025 – December 2025",
     summary:
-      "Built full-stack analytics platform ingesting 20M+ NYC taxi trip records from January to August 2025 into PostgreSQL, implementing five materialized views and eleven strategic indexes to enable interactive analysis of fare trends, peak demand patterns, and vendor performance.",
+      "Reduced fare and demand analysis from 7 hours to 15 minutes across 20M+ NYC taxi trips by ingesting 8 months of Parquet files into a normalized PostgreSQL schema, building a Flask REST API, and deploying an interactive React dashboard across 256 taxi zones.",
     tags: ["SQL", "ETL", "Visualization"],
     detail: {
       problem:
@@ -177,10 +214,10 @@ export const projects: Project[] = [
         "Supporting exploratory analysis across demand trends, fare distributions, and vendor-level performance.",
       ],
       outcomes: [
-        "Analyzed over 20M NYC Yellow Taxi trips spanning Jan–Aug 2025 using a PostgreSQL-backed analytics platform.",
-        "Enabled analysis of demand patterns, fare behavior, and vendor performance through structured queries and data workflows.",
+        "Reduced fare and demand analysis from 7 hours to 15 minutes across 20M+ NYC taxi trips.",
+        "Ingested 8 months of Parquet files into a normalized PostgreSQL schema with a Flask REST API and React dashboard across 256 taxi zones.",
       ],
-      stack: ["PostgreSQL", "Python"],
+      stack: ["Python", "PostgreSQL", "Flask", "React", "ETL"],
     },
   },
   {
@@ -189,7 +226,7 @@ export const projects: Project[] = [
     title: "Gender Wage Gap Scrollytelling",
     date: "Jan 2025 – May 2025",
     summary:
-      "Built wage visualization platform processing 344K records, creating multi-dimensional aggregations across year, age, occupation, race, and education, and delivering comparative gender and racial pay-gap insights through an interactive scrollytelling interface using Python and D3.js.",
+      "Enabled real-time exploration of wage disparities across 344K records spanning 1981 to 2013, reducing manual analysis from 1.5 hours to 15 minutes across 6 demographic dimensions including age, education, and occupation, using an interactive D3.js scrollytelling interface.",
     tags: ["Visualization"],
     detail: {
       problem:
@@ -201,10 +238,10 @@ export const projects: Project[] = [
         "Balancing narrative flow with data-driven accuracy to keep insights grounded in the underlying dataset.",
       ],
       outcomes: [
-        "Analyzed 50,000 wage records spanning 1981–2013 to quantify gender pay disparities.",
-        "Revealed demographic-specific wage gaps through interactive, narrative-driven visualizations.",
+        "Reduced manual analysis from 1.5 hours to 15 minutes across 344K wage records spanning 1981 to 2013.",
+        "Enabled disparity exploration across 6 demographic dimensions including age, education, and occupation.",
       ],
-      stack: ["D3.js"],
+    stack: ["Python", "D3.js", "JavaScript"],
     },
   },
   {
@@ -315,8 +352,7 @@ export const projects: Project[] = [
     detail: {
       problem:
         "Detect animals that visually blend into their environment, a challenging object detection task due to low contrast, strong camouflage, and limited annotated training data.",
-      github:
-        "https://github.com/munawwar22HU/Camouflage-Animal-Detection",
+      github: "https://github.com/munawwar22HU/Camouflage-Animal-Detection",
       challenges: [
         "Handling extremely low foreground–background contrast caused by natural camouflage.",
         "Unifying multiple camouflaged object detection datasets with inconsistent annotation formats.",
@@ -375,7 +411,8 @@ export const projects: Project[] = [
     detail: {
       problem:
         "Automate the generation of textile patterns using deep generative models to reduce manual design effort and explore culturally inspired fabric design synthesis.",
-      github: "https://github.com/munawwar22HU/Synthetic-Textile-Fabric-Pattern-Generation-using-GAN",
+      github:
+        "https://github.com/munawwar22HU/Synthetic-Textile-Fabric-Pattern-Generation-using-GAN",
       challenges: [
         "Collecting and augmenting a textile dataset of approximately 15,000 fabric images spanning six pattern categories.",
         "Implementing and stabilizing multiple generative architectures, including DCGAN, StyleGAN, and Variational Autoencoders, on a limited dataset.",
@@ -466,7 +503,6 @@ export const projects: Project[] = [
     },
   },
 ];
-
 
 export const resume = {
   currentRole: "Data Analyst with 3+ Years Experience",

@@ -3,20 +3,22 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Muhammad Munawwar Anwar | Data Engineer & Analyst",
+    default: "Muhammad Munawwar Anwar | Data Analyst",
     template: "%s | Muhammad Munawwar Anwar",
   },
   description:
-    "Portfolio of Muhammad Munawwar Anwar — Data Engineer and Analyst specializing in SQL, Python, machine learning, data visualization, and end-to-end data pipelines.",
+    "Portfolio of Muhammad Munawwar Anwar — Entry-Level Data Analyst specializing in SQL, Python, Power BI, ETL pipelines, and data validation.",
 
   keywords: [
     "Muhammad Munawwar Anwar",
-    "Data Engineer",
     "Data Analyst",
     "SQL",
     "Python",
-    "Machine Learning",
+    "Power BI",
+    "ETL Pipelines",
+    "Data Validation",
     "Data Visualization",
+    "Emory University",
     "Portfolio",
   ],
 
@@ -24,10 +26,10 @@ export const metadata: Metadata = {
   creator: "Muhammad Munawwar Anwar",
 
   openGraph: {
-    title: "Muhammad Munawwar Anwar | Data Engineer & Analyst",
+    title: "Muhammad Munawwar Anwar | Data Analyst",
     description:
-      "Data engineering and analytics portfolio featuring projects in SQL, Python, machine learning, and visualization.",
-    url: "https://portfolio-eta-navy-34.vercel.app/",
+      "Entry-Level Data Analyst portfolio featuring projects in SQL optimization, Python automation, ETL pipelines, and Power BI dashboards.",
+    url: "https://munawwaranwar.com",
     siteName: "Muhammad Munawwar Anwar Portfolio",
     images: [
       {
@@ -43,9 +45,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Muhammad Munawwar Anwar | Data Engineer & Analyst",
+    title: "Muhammad Munawwar Anwar | Data Analyst",
     description:
-      "Portfolio showcasing data engineering, analytics, and machine learning projects.",
+      "Entry-Level Data Analyst portfolio showcasing SQL optimization, Python automation, ETL pipelines, and data visualization projects.",
     images: ["/og.png"],
   },
 
