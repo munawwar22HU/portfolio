@@ -23,7 +23,6 @@ export const profile = {
     resumePdf: "/resume.pdf",
   },
 };
-};
 
 export const about = {
   text: "I'm a data analyst with a background in SQL optimization, ETL pipeline development, and Python-based data validation. Most recently at ABM Industries, I worked on migrating enterprise FP&A queries from Oracle Fusion to Azure SQL and validating 200K financial records during a live cloud migration — work that required both technical precision and an understanding of how data quality affects downstream reporting. I recently completed my M.S. in Computer Science at Emory University with a 4.0 GPA. I'm currently looking for full-time Data Analyst roles in Atlanta or remotely across the US.",
