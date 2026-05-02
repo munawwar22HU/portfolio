@@ -1,19 +1,19 @@
 export const profile = {
   name: "Muhammad Munawwar Anwar",
-  locationPill: "Atlanta, GA (Open to Relocate)",
-  headlinePrimary: "Entry-Level Data Analyst",
-  tagline: "Python, SQL, & Power BI",
-  subtag: "M.S. Computer Science, Emory University | Open to Opportunities",
+  locationPill: "Atlanta, GA",
+  headlinePrimary: "Data Analyst",
+  tagline: "SQL · Python · ETL Pipelines · Power BI",
+  subtag: "M.S. CS, Emory University (4.0 GPA)",
   skillsPills: [
-    "Data Analysis",
-    "SQL",
+   "SQL",
     "Python",
-    "Microsoft Power BI",
-    "Tableau",
+    "ETL Pipelines",
+    "PostgreSQL",
+    "Power BI",
   ],
   metrics: [
-    { value: "1+", label: "Years Experience" },
-    { value: "200K+", label: "Records Validated" },
+    { value: "4.0", label: "M.S. GPA — Emory" },
+    { value: "2", label: "IEEE Publications" },
     { value: "20M+", label: "Records Processed" },
   ],
   links: {
@@ -23,9 +23,10 @@ export const profile = {
     resumePdf: "/resume.pdf",
   },
 };
+};
 
 export const about = {
-  text: "M.S. Computer Science graduate from Emory University with hands-on experience in SQL query optimization, Python-based data validation, and ETL pipeline development. Skilled in translating raw data into actionable insights through Power BI, Tableau, and PostgreSQL. Comfortable working across the full analytics stack from data ingestion to business-facing reporting.",
+  text: "I'm a data analyst with a background in SQL optimization, ETL pipeline development, and Python-based data validation. Most recently at ABM Industries, I worked on migrating enterprise FP&A queries from Oracle Fusion to Azure SQL and validating 200K financial records during a live cloud migration — work that required both technical precision and an understanding of how data quality affects downstream reporting. I recently completed my M.S. in Computer Science at Emory University with a 4.0 GPA. I'm currently looking for full-time Data Analyst roles in Atlanta or remotely across the US.",
 };
 export const experience = [
   {
@@ -34,99 +35,93 @@ export const experience = [
     dates: "June 2025 – August 2025",
     location: "Atlanta, GA",
     bullets: [
-      "Migrated 2 FP&A Oracle Fusion queries to Azure SQL, cutting runtime from 60 to 30 minutes and saving 3 hours per close cycle, by converting PL/SQL to T-SQL and applying indexing optimization.",
-      "Validated 200K financial records, reducing mismatches from 12K to 1.5K and improving executive reporting accuracy, by writing Python validation scripts and SQL reconciliation logic during Oracle-to-Azure SQL migration.",
-      "Reduced policy lookup time from 30 minutes to under 5 minutes for operations teams, saving 20 hours monthly, by building an automated Q&A system from 30 SOP documents using Python parsing and Azure OpenAI.",
+      "Migrated AR Cash Received and AR Aging FP&A queries from Oracle Fusion to Azure SQL, reducing query runtime by 50% and saving 3 hours per close cycle, enabling the data team to build downstream financial dashboards, by converting PL/SQL to T-SQL and applying indexing optimization.",
+      "Validated 200K financial records during Oracle-to-Azure SQL migration, reducing data mismatches from 12K to 1.5K and improving accounts receivable reconciliation accuracy, by developing Python validation scripts and SQL reconciliation logic.",
+      "Built an Azure OpenAI-powered Q&A prototype over 30 SOP documents using Python parsing, reducing policy lookup time from 30 minutes to under 5 minutes in internal testing.",
     ],
-  },
-  {
+  },{
     company: "Habib University",
-    role: "Research Assistant",
-    dates: " July 2022 – July 2024",
+    role: "Research Assistant — Computer Science",
+    dates: "July 2022 – July 2024",
     location: "Karachi, Pakistan",
     bullets: [
-      "Constructed 34 Python and SQL lab assignments, reducing grading time from 15 to 10 minutes per submission and cutting TA workload from 8 to 4 hours weekly for 100+ students, by developing reusable rubrics.",
-      "Facilitated weekly 3-hour labs for 30+ students, reducing completion time from 120 to 90 minutes and enabling 80%+ in-session completion, through hands-on instruction and personalized debugging support.",
-      "Mentored 10 Deep Learning research projects resulting in 2 IEEE conference acceptances, by providing weekly code reviews and methodology guidance.",
+      "Designed and validated lab curriculum for Database Systems across two semesters, covering relational modeling, query optimization, and schema design for 30+ students per cohort, including pre-solving all assignments to identify edge cases before distribution.",
+      "Developed assessments for Algorithms, Data Structures I/II, and Nature of Computation, requiring formal correctness validation and edge case analysis on each problem set prior to student release.",
+      "Built and evaluated coursework for Deep Learning (two semesters) and an inaugural LLM course, maintaining technical currency across transformer architectures and prompt engineering methods.",
+      "Contributed to research design and weekly code reviews across 10 Deep Learning projects, resulting in 2 IEEE conference acceptances including a Best Paper Award.",
     ],
   },
-  {
+{
     company: "Parents Voice Association – UJALA Centre",
-    role: "Web Developer (Part-time & Remote)",
+    role: "Web Developer",
     dates: "June 2021 – May 2022",
     location: "Karachi, Pakistan",
     bullets: [
-      "Built full-stack management system for special education NGO, digitizing student/teacher records, fee tracking, sponsorships, and certificate workflows into centralized database and replacing manual paper-based administrative processes with web-based CRUD interface through MERN stack with MongoDB, role-based authentication, and RESTful API design.",
+      "Built and deployed a full-stack MERN application for a special education NGO, digitizing records for 30 students and 10 teachers with role-based authentication across admin, student, and finance users.",
     ],
-  },
-  {
+  },{
     company: "Ismail Industries Limited",
     role: "IT Intern",
     dates: "July 2021 – August 2021",
     location: "Karachi, Pakistan",
     bullets: [
-      "Streamlined security log analysis, reducing alert review time from 5 hours to 1 hour, by converting 100K+ daily Trend Micro logs into structured CSVs using Python automation and an ETL pipeline into SQL Server.",
-      "Built a Power BI dashboard from SQL Server data, reducing reporting time from 2 hours to 10 minutes and enabling IT leadership to implement timely policy updates through interactive visualizations.",
+      "Converted 100K+ daily Trend Micro security logs into structured CSVs using Python automation and loaded into SQL Server via ETL pipeline, reducing alert review time from 5 hours to 1 hour.",
+      "Built a Power BI dashboard from SQL Server data, reducing reporting time from 2 hours to 10 minutes and enabling IT leadership to implement timely policy updates.",
     ],
   },
 ];
 
 export const skillGroups = [
   {
-    title: "Programming Languages",
+    title: "Languages",
     icon: "💻",
-    items: ["SQL", "Python", "R", "JavaScript"],
+    items: ["SQL", "Python", "JavaScript"],
   },
   {
     title: "Python Libraries",
     icon: "🐍",
-    items: ["Pandas", "NumPy", "Matplotlib", "Scikit-learn"],
+    items: ["Pandas", "NumPy", "Matplotlib", "Flask"],
   },
   {
-    title: "Data Visualization",
-    icon: "📊",
-    items: ["Power BI", "Tableau", "D3.js", "Plotly", "Excel (Advanced)"],
-  },
-  {
-    title: "Analytics",
-    icon: "🔎",
-    items: [
-      "KPI Development",
-      "A/B Testing",
-      "Statistical Analysis",
-      "Regression",
-      "Forecasting",
-      "Hypothesis Testing",
-    ],
+    title: "Databases",
+    icon: "🗄️",
+    items: ["PostgreSQL", "Azure SQL", "Oracle Database", "SQL Server", "MongoDB"],
   },
   {
     title: "Data Engineering",
     icon: "⚙️",
     items: [
-      "ETL/ELT Pipelines",
+      "ETL Pipelines",
       "Data Modeling",
       "Data Warehousing",
       "API Integration",
+      "Query Optimization",
+      "Data Quality",
     ],
   },
   {
-    title: "Databases",
-    icon: "🗄️",
-    items: ["SQL Server", "PostgreSQL", "MySQL", "SQLite", "MongoDB"],
+    title: "Data Visualization",
+    icon: "📊",
+    items: ["Tableau", "D3.js"],
   },
   {
-    title: "Cloud",
-    icon: "☁️",
+    title: "Business Intelligence",
+    icon: "📈",
     items: [
-      "Azure (Azure SQL, Azure OpenAI)",
-      "AWS (S3, Athena, Glue, QuickSight)",
-      "GCP (BigQuery)",
+      "Power BI",
+      "Excel (PivotTables, Power Query, XLOOKUP, INDEX/MATCH)",
+      "Dashboard Building",
     ],
   },
   {
-    title: "Tools",
+    title: "Analytics",
+    icon: "🔎",
+    items: ["Statistical Analysis", "A/B Testing"],
+  },
+  {
+    title: "Tools & Platforms",
     icon: "🛠️",
-    items: ["Git", "GitHub Actions", "Jupyter Notebook"],
+    items: ["Git", "GitHub", "Jupyter Notebook", "VS Code", "Postman"],
   },
 ];
 
