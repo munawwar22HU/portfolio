@@ -1,6 +1,6 @@
 "use client";
 
-import { about, experience, skillGroups } from "@/data/content";
+import { about, experience, skillGroups,publications } from "@/data/content";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -30,7 +30,6 @@ export default function AboutSection() {
             {about.text}
           </p>
         </motion.div>
-
         {/* 2) Work Experience */}
         <div id="experience" className="mt-24 sm:mt-32">
           <motion.h3
@@ -43,31 +42,41 @@ export default function AboutSection() {
           </motion.h3>
           <WorkTimeline />
         </div>
-
-        {/* 3) Technical Skills */}
-        <div className="mt-24 sm:mt-32">
+        {/* 3) Education */}
+        <div id="education" className="mt-24 sm:mt-32">
           <motion.h3
             className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Technical Skills
+            Education
           </motion.h3>
-          <SkillsCards />
+          <EducationCards />
         </div>
-
-        {/* 4) Education */}
-        <div id="education" className="mt-24 sm:mt-32">
+        {/* 4) Publications */}
+        <div id="publications" className="mt-24 sm:mt-32">
           <motion.h3
             className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Education
+            Publications
           </motion.h3>
-          <EducationCards />
+          <PublicationCards />
+        </div>
+        {/* 5) Technical Skills */}
+        <div className="mt-24 sm:mt-32">
+          <motion.h3
+            className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            Technical Skills
+          </motion.h3>
+          <SkillsCards />
         </div>
       </div>
     </section>
@@ -295,6 +304,87 @@ function EducationCards() {
               </div>
             </div>
           )}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+
+function PublicationCards() {
+  const cards = publications;
+  const cardsRef = useRef(null);
+  const isInView = useInView(cardsRef, { once: true, margin: "-50px" });
+
+  return (
+    <div ref={cardsRef} className="mt-12 grid gap-6 md:grid-cols-2">
+      {cards.map((pub, index) => (
+        <motion.div
+          key={pub.id}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.5, delay: index * 0.15 }}
+          whileHover={{ scale: 1.01, y: -2 }}
+          className="rounded-xl border border-violet-400/20 bg-gradient-to-br from-white/[0.03] to-violet-500/5 p-7 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/40 hover:bg-gradient-to-br hover:from-white/[0.05] hover:to-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20"
+        >
+          {/* Award Badge */}
+          {pub.award && (
+            <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-300">
+              🏆 {pub.award}
+            </div>
+          )}
+
+          {/* Title */}
+          <div className="text-base font-bold text-white leading-snug">
+            {pub.title}
+          </div>
+
+          {/* Authors */}
+          <div className="mt-2 text-xs text-zinc-400 leading-relaxed">
+            {pub.authors}
+          </div>
+
+          {/* Conference */}
+          <div className="mt-3 text-xs font-medium bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+            {pub.conference}
+          </div>
+
+          {/* Meta */}
+          <div className="mt-1 text-xs text-zinc-500">
+            {pub.location} · {pub.year} · pp. {pub.pages}
+          </div>
+
+          {/* Abstract */}
+          <div className="mt-4 text-xs text-zinc-400 leading-relaxed">
+            {pub.abstract}
+          </div>
+
+          {/* Stack */}
+          <div className="mt-4 flex flex-wrap gap-2">
+            {pub.stack.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-md border border-violet-400/20 bg-violet-500/10 px-2 py-1 text-xs text-violet-300"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* IEEE Link */}
+          <div className="mt-5">
+            
+              href={pub.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-300 hover:text-violet-200 underline underline-offset-4 transition-colors"
+            >
+              View on IEEE Xplore
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
         </motion.div>
       ))}
     </div>
