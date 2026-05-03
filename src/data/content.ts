@@ -567,3 +567,35 @@ export const contact = {
   ],
   responseTimeText: "Response time: Usually within 24 hours",
 };
+
+
+export const publications = [
+  {
+    id: "punjabi-poet-attribution",
+    title: "Deep Learning based Poet Attribution model for Punjabi Poetry",
+    authors: "F. Tariq, R. Gopchandani, R. H. Nizamani, A. Samad, M. M. Anwar",
+    conference: "2024 International Conference on Emerging Trends in Smart Technologies (ICETST)",
+    location: "Karachi, Pakistan",
+    year: 2024,
+    pages: "1-6",
+    doi: "10.1109/ICETST62952.2024.10737982",
+    url: "https://ieeexplore.ieee.org/document/10737982",
+    abstract: "A Deep Learning model for Poet Attribution for Punjabi poetry using Shahmukhi, Gurmukhi, and Roman scripts. Dataset consists of 830 poems from 11 poets. Using Multilingual DistilBERT with Bi-LSTM and Bi-GRU, achieved 91.57% accuracy on Roman script.",
+    award: "Best Paper Award",
+    stack: ["Python", "PyTorch", "DistilBERT", "Bi-LSTM", "Bi-GRU"],
+  },
+  {
+    id: "sindhi-poet-classification",
+    title: "A Deep Learning based Approach for Sindhi Poet Classification using Couplets",
+    authors: "A. Samad, M. M. Anwar, R. K. Kataria, M. Murtaza, F. Ali",
+    conference: "2024 International Conference on Emerging Trends in Smart Technologies (ICETST)",
+    location: "Karachi, Pakistan",
+    year: 2024,
+    pages: "1-6",
+    doi: "10.1109/ICETST62952.2024.10737966",
+    url: "https://ieeexplore.ieee.org/document/10737966",
+    abstract: "A Deep Learning model for automatic classification of Sindhi poets based on couplets. Dataset consists of 3000 couplets from five poets. Using Word2Vec, MuRIL, and 1D CNNs, achieved 87.2% test accuracy — the first study to focus on Sindhi poetry.",
+    award: null,
+    stack: ["Python", "PySpark", "BERT", "Keras", "CNN"],
+  },
+];
