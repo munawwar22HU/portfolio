@@ -194,17 +194,61 @@ function SkillsCards() {
 
 /* ---------- Education Cards ---------- */
 
+// function EducationCards() {
+//   const cards = [
+//     {
+//       school: "Emory University",
+//       degree: "Masters, Computer Science",
+//       meta: "GPA: 4.0/4.0 | August 2024 - December 2025",
+//     },
+//     {
+//       school: "Habib University",
+//       degree: "Bachelors, Computer Science",
+//       meta: "GPA: 3.85/4.0 | August 2018 - June 2022",
+//     },
+//   ];
+
+//   const cardsRef = useRef(null);
+//   const isInView = useInView(cardsRef, { once: true, margin: "-50px" });
+
+//   return (
+//     <div ref={cardsRef} className="mt-12 grid gap-6 md:grid-cols-2">
+//       {cards.map((c, index) => (
+//         <motion.div
+//           key={c.school}
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+//           transition={{ duration: 0.5, delay: index * 0.15 }}
+//           whileHover={{ scale: 1.01, y: -2 }}
+//           className="rounded-xl border border-violet-400/20 bg-gradient-to-br from-white/[0.03] to-violet-500/5 p-7 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/40 hover:bg-gradient-to-br hover:from-white/[0.05] hover:to-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20"
+//         >
+//           <div className="text-lg font-bold text-white">{c.school}</div>
+//           <div className="mt-2 text-sm font-medium bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">{c.degree}</div>
+//           <div className="mt-5 text-xs text-zinc-400 leading-relaxed">{c.meta}</div>
+//         </motion.div>
+//       ))}
+//     </div>
+//   );
+// }
 function EducationCards() {
   const cards = [
     {
       school: "Emory University",
-      degree: "Masters, Computer Science",
-      meta: "GPA: 4.0/4.0 | August 2024 - December 2025",
+      degree: "Master of Science in Computer Science",
+      meta: "GPA: 4.0/4.0 | August 2024 – December 2025",
+      coursework: [
+        "Database Systems",
+        "Machine Learning",
+        "Information Visualization",
+        "Data Mining",
+        "Data Privacy & Security",
+      ],
     },
     {
       school: "Habib University",
-      degree: "Bachelors, Computer Science",
-      meta: "GPA: 3.85/4.0 | August 2018 - June 2022",
+      degree: "Bachelor of Science in Computer Science (Minor: Mathematics)",
+      meta: "GPA: 3.85/4.0 | August 2018 – June 2022",
+      coursework: [],
     },
   ];
 
@@ -220,11 +264,28 @@ function EducationCards() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.5, delay: index * 0.15 }}
           whileHover={{ scale: 1.01, y: -2 }}
-          className="rounded-xl border border-violet-400/20 bg-gradient-to-br from-white/[0.03] to-violet-500/5 p-7 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/40 hover:bg-gradient-to-br hover:from-white/[0.05] hover:to-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20"
+          className="rounded-xl border border-violet-400/20 bg-gradient-to.br from-white/[0.03] to-violet-500/5 p-7 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/40 hover:bg-gradient-to-br hover:from-white/[0.05] hover:to-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20"
         >
           <div className="text-lg font-bold text-white">{c.school}</div>
-          <div className="mt-2 text-sm font-medium bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">{c.degree}</div>
-          <div className="mt-5 text-xs text-zinc-400 leading-relaxed">{c.meta}</div>
+          <div className="mt-2 text-sm font-medium bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+            {c.degree}
+          </div>
+          <div className="mt-3 text-xs text-zinc-400 leading-relaxed">{c.meta}</div>
+          {c.coursework.length > 0 && (
+            <div className="mt-4">
+              <div className="text-xs font-medium text-zinc-300 mb-2">Relevant Coursework</div>
+              <div className="flex flex-wrap gap-2">
+                {c.coursework.map((course) => (
+                  <span
+                    key={course}
+                    className="rounded-md border border-violet-400/20 bg-violet-500/10 px-2 py-1 text-xs text-violet-300"
+                  >
+                    {course}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </motion.div>
       ))}
     </div>
