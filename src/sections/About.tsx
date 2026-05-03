@@ -248,7 +248,16 @@ function EducationCards() {
       school: "Habib University",
       degree: "Bachelor of Science in Computer Science (Minor: Mathematics)",
       meta: "GPA: 3.85/4.0 | August 2018 – June 2022",
-      coursework: [],
+      coursework: [
+  "Database Systems",
+  "Artificial Intelligence",
+  "Deep Learning",
+  "Computer Vision",
+  "Data Science",
+  "Mathematics for Machine Learning",
+  "AstroStatistics",
+  "Scientific Methods",
+],
     },
   ];
 
