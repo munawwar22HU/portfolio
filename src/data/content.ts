@@ -127,10 +127,12 @@ export const skillGroups = [
 export type ProjectTag =
   | "All"
   | "Machine Learning"
+  | "NLP"
+  | "Computer Vision"
   | "SQL"
   | "Visualization"
   | "ETL"
-  | "Full Stack";
+  | "Statistics";
 
 export type Project = {
   id: string;
@@ -151,101 +153,145 @@ export type Project = {
 export const projectFilters: ProjectTag[] = [
   "All",
   "Machine Learning",
+  "NLP",
+  "Computer Vision",
   "SQL",
   "Visualization",
   "ETL",
-  "Full Stack",
+  "Statistics",
 ];
 
 export const projects: Project[] = [
-  {
-    id: "weather-etl-openweather",
-    icon: "☁️",
-    title: "Weather ETL & Dashboard",
-    date: "2025 – Present",
+{
+    id: "card-transaction-dashboard",
+    icon: "💳",
+    title: "Card Transaction Analysis Dashboard",
+    date: "March 2026 – April 2026",
     summary:
-      "Eliminated 1.5 hours of daily manual data collection by automating weather ingestion from a public API every 10 minutes into SQLite across 5 cities, using Python and GitHub Actions for scheduling and monitoring.",
-    tags: ["ETL", "Visualization"],
+      "Built an Excel-based dashboard tracking $38.6M in spend across 55.7K transactions, using PivotTables, slicers, timeline filters, and KPI cards to surface fraud patterns, category performance, and weekly transaction trends.",
+    tags: ["Visualization"],
     detail: {
       problem:
-        "Create a real-time pipeline to continuously ingest weather data from the OpenWeatherMap API, store it in a queryable database, and provide an interactive dashboard for trend analysis.",
-      github: "https://github.com/munawwar22HU/weather-etl",
+        "Analyze $38.6M in card transaction data to surface fraud patterns, spending trends by category, and weekly behavioral shifts across 55.7K transactions spanning June 2020 to December 2021.",
+      github: "",
       challenges: [
-        "Designing a reliable ETL pipeline that runs on a schedule using GitHub Actions.",
-        "Handling API rate limits, JSON parsing, error resilience, and idempotent data loads.",
-        "Storing time-series weather data efficiently in SQLite and enabling analytical queries.",
-        "Building an interactive Streamlit dashboard that supports multi-city trend analysis with Plotly charts.",
+        "Structuring raw transaction data into a PivotTable-driven model supporting multi-dimensional filtering by fraud status, state, and category.",
+        "Designing KPI cards that surface key metrics — total spend, transaction count, average spend, and fraud percentage — at a glance.",
+        "Building timeline and slicer controls that enable non-technical stakeholders to explore data without manual filtering.",
+        "Identifying and communicating a non-obvious insight: fraud represented only 0.39% of transactions but 2.94% of total spend value.",
       ],
       outcomes: [
-        "Eliminated 1.5 hours of daily manual data collection across 5 cities.",
-        "Automated weather ingestion every 10 minutes into SQLite using Python and GitHub Actions.",
+        "Tracked $38.6M in spend across 55.7K transactions with interactive filtering by fraud status, state, and category.",
+        "Surfaced that fraud was 0.39% of transactions but 2.94% of total spend — a disproportionate financial impact not visible in volume metrics alone.",
+        "Identified Shopping and Grocery as the dominant categories by both transaction count and total spend.",
+        "Revealed a significant spending spike in December, consistent with seasonal consumer behavior patterns.",
       ],
       stack: [
-        "Python",
-        "SQLite",
-        "GitHub Actions",
-        "Streamlit",
-        "Plotly",
-        "OpenWeatherMap API",
+        "Microsoft Excel",
+        "PivotTables",
+        "Power Query",
       ],
     },
   },
-  {
+{
     id: "nyc-taxi",
     icon: "🚕",
-    title: "NYC Yellow Taxi Analytics Platform",
+    title: "NYC Taxi Analytics Platform",
     date: "August 2025 – December 2025",
     summary:
-      "Reduced fare and demand analysis from 7 hours to 15 minutes across 20M+ NYC taxi trips by ingesting 8 months of Parquet files into a normalized PostgreSQL schema, building a Flask REST API, and deploying an interactive React dashboard across 256 taxi zones.",
+      "Engineered a normalized PostgreSQL analytics platform ingesting 20M+ taxi records through Parquet ETL, a modular Flask REST API, and an interactive React dashboard, reducing fare and demand analysis from 7 hours to 15 minutes.",
     tags: ["SQL", "ETL", "Visualization"],
     detail: {
       problem:
-        "Enable analysis of 20M+ NYC taxi trips (Jan–Aug 2025) to surface insights on demand, fare patterns, and vendor performance.",
+        "Enable scalable analysis of 20M+ NYC taxi trips to surface insights on demand patterns, fare distributions, and vendor performance across 256 taxi zones.",
       github: "https://github.com/munawwar22HU/Database-Project",
       challenges: [
-        "Modeling large-scale taxi trip data in PostgreSQL with schemas optimized for analytical query performance.",
-        "Processing and preparing high-volume trip records using Python while ensuring reproducibility and consistency.",
-        "Supporting exploratory analysis across demand trends, fare distributions, and vendor-level performance.",
+        "Designing a normalized PostgreSQL schema optimized for analytical query performance at 20M+ record scale.",
+        "Building a reproducible Parquet ETL pipeline to ingest and process 8 months of high-volume trip records.",
+        "Exposing analytical queries through a modular Flask REST API consumed by a React dashboard.",
       ],
       outcomes: [
         "Reduced fare and demand analysis from 7 hours to 15 minutes across 20M+ NYC taxi trips.",
-        "Ingested 8 months of Parquet files into a normalized PostgreSQL schema with a Flask REST API and React dashboard across 256 taxi zones.",
+        "Ingested 8 months of Parquet files into a normalized PostgreSQL schema with indexing strategies and materialized views.",
+        "Deployed an interactive React dashboard enabling real-time exploration across 256 taxi zones.",
       ],
-      stack: ["Python", "PostgreSQL", "Flask", "React", "ETL"],
+      stack: [
+  "Python",
+  "PostgreSQL",
+  "Flask",
+  "React",
+  "Pandas",
+  "PyArrow",
+],
+    },
+  },
+  {
+    id: "genai-vs-interactive-viz",
+    icon: "🎓",
+    title: "AI Learning Effectiveness Study",
+    date: "January 2025 – April 2025",
+    summary:
+      "Investigated ChatGPT and interactive visualizations as AI learning tools across 36 participants, finding interactive visualization yielded 27% higher knowledge gains by applying paired and independent-samples t-tests on pre/post-test scores.",
+    tags: ["Visualization","Statistics"],
+    detail: {
+      problem:
+        "Determine whether interactive visualizations or generative AI tools like ChatGPT produce greater knowledge gains when used as AI literacy learning tools, using a controlled user study with pre and post-test scoring.",
+      github: "",
+      challenges: [
+        "Designing a controlled study with 36 participants that fairly compared ChatGPT and interactive visualization as learning interventions.",
+        "Building pre and post-test instruments that accurately measured knowledge gains across both conditions.",
+        "Selecting appropriate statistical tests — paired and independent-samples t-tests — to account for within-group and between-group comparisons.",
+        "Controlling for confounding variables including prior AI familiarity, engagement levels, and self-reported confidence.",
+      ],
+      outcomes: [
+        "Interactive visualization yielded 27% higher average knowledge gains than ChatGPT (5.94 vs 4.68 out of 11).",
+        "Paired t-tests confirmed statistically significant knowledge gains within the interactive visualization group.",
+        "Interactive visualization group reported stronger engagement, confidence, and satisfaction scores than the ChatGPT group.",
+        "Findings suggest interactive visualizations are more effective than generative AI for structured AI literacy learning.",
+      ],
+      stack: [
+        "Python",
+        "Pandas",
+        "Matplotlib",
+        "SciPy",
+        "StatsModels",
+      ],
     },
   },
   {
     id: "wage-gap",
     icon: "📊",
-    title: "Gender Wage Gap Scrollytelling",
-    date: "Jan 2025 – May 2025",
+    title: "Gender Wage Gap Analysis Platform",
+    date: "January 2025 – April 2025",
     summary:
-      "Enabled real-time exploration of wage disparities across 344K records spanning 1981 to 2013, reducing manual analysis from 1.5 hours to 15 minutes across 6 demographic dimensions including age, education, and occupation, using an interactive D3.js scrollytelling interface.",
+      "Designed an interactive D3.js platform processing 344K wage records across 6 demographic dimensions spanning 32 years, reducing manual analysis from 1.5 hours to 15 minutes.",
     tags: ["Visualization"],
     detail: {
       problem:
-        "Communicate gender pay disparities across demographics using an interactive narrative backed by wage data (1981–2013).",
+        "Enable interactive exploration of gender pay disparities across 344K wage records spanning 32 years and 6 demographic dimensions including age, education, and occupation.",
       github: "https://github.com/munawwar22HU/genderpaygap.io",
       challenges: [
-        "Designing a scrollytelling structure that clearly guides users through complex wage data insights.",
-        "Building interactive D3.js visualizations that support exploration across demographic dimensions.",
-        "Balancing narrative flow with data-driven accuracy to keep insights grounded in the underlying dataset.",
+        "Designing a scrollytelling structure that clearly guides users through complex wage disparity insights without losing analytical accuracy.",
+        "Building interactive D3.js visualizations that support real-time filtering across 6 demographic dimensions.",
+        "Processing and structuring 344K records in Python for efficient client-side rendering in D3.js.",
       ],
       outcomes: [
-        "Reduced manual analysis from 1.5 hours to 15 minutes across 344K wage records spanning 1981 to 2013.",
-        "Enabled disparity exploration across 6 demographic dimensions including age, education, and occupation.",
+        "Reduced manual analysis from 1.5 hours to 15 minutes across 344K wage records spanning 32 years.",
+        "Enabled real-time disparity exploration across 6 demographic dimensions including age, education, and occupation.",
+        "Deployed as an interactive web platform accessible at munawwar22hu.github.io/genderpaygap.io",
       ],
-    stack: ["Python", "D3.js", "JavaScript"],
+      stack: ["Python", "Pandas", "JavaScript", "D3.js"],
     },
   },
-  {
+  
+ {
     id: "crypto-fraud-gnn",
     icon: "🔗",
     title: "Graph-Based Fraud Detection in Cryptocurrency Networks",
-    date: "Jan 2025 – Apr 2025",
+    date: "January 2025 – April 2025",
     summary:
-      "Conducted a comparative study of traditional and graph-based machine learning models for detecting illicit cryptocurrency transactions, achieving up to 0.97 accuracy and 0.88 macro F1 on the Elliptic dataset and 0.9857 accuracy with 0.9312 macro F1 on the Ethereum dataset.",
-    tags: ["Machine Learning", "Visualization"],
+      "Benchmarked 8 traditional and graph-based ML models for illicit transaction detection on Elliptic (203K nodes) and Ethereum datasets. GraphSAGE achieved 98.57% accuracy and 93% Macro F1 on Ethereum while Random Forest achieved 97% accuracy and 88% Macro F1 on Elliptic.",
+    tags: ["Machine Learning"],
     detail: {
       problem:
         "Detect illicit cryptocurrency transactions by modeling blockchain data as graphs and evaluating whether graph-based learning methods outperform traditional machine learning under class imbalance.",
@@ -254,285 +300,270 @@ export const projects: Project[] = [
       challenges: [
         "Formulating illicit transaction detection as a binary node classification problem on large-scale blockchain transaction graphs.",
         "Handling severe class imbalance while leveraging both transactional features and graph structural information.",
-        "Training and fairly comparing traditional machine learning models and graph-based models across heterogeneous blockchain datasets.",
-        "Designing temporal train–validation–test splits to preserve the chronological integrity of blockchain transactions.",
-        "Selecting evaluation metrics, including accuracy, AUC, macro F1, precision, and recall, to reflect performance under class imbalance.",
+        "Training and fairly comparing traditional ML and graph-based models across heterogeneous blockchain datasets.",
+        "Designing temporal train-validation-test splits to preserve the chronological integrity of blockchain transactions.",
+        "Selecting evaluation metrics including accuracy, AUC, macro F1, precision, and recall to reflect performance under class imbalance.",
       ],
       outcomes: [
-        "Achieved highest performance on the Elliptic dataset using Random Forest with 0.97 accuracy and 0.88 macro F1, outperforming graph-based models.",
-        "Observed lower macro F1 scores for graph-based models on Elliptic, with GCN and GraphSAGE each achieving 0.72 macro F1.",
-        "Demonstrated superior performance of graph-based learning on the Ethereum dataset, with GraphSAGE reaching 0.9857 accuracy and 0.9312 macro F1.",
-        "Established that graph-based models are more effective when relational structure provides additional predictive signal beyond transactional features.",
+        "Random Forest achieved 97% accuracy and 88% Macro F1 on the Elliptic dataset, outperforming all graph-based models.",
+        "GraphSAGE achieved 98.57% accuracy and 93% Macro F1 on the Ethereum dataset, demonstrating the value of relational structure.",
+        "Established that graph-based models outperform traditional ML when relational structure provides additional predictive signal.",
+        "Benchmarked 8 models total including GCN, GAT, GraphSAGE, Graph Transformers, and Random Forest across two datasets.",
       ],
-      stack: [
-        "Python",
-        "Scikit-learn",
-        "PyTorch Geometric",
-        "GCN",
-        "GAT",
-        "GraphSAGE",
-        "Graph Transformers",
-      ],
+    stack: [
+  "Python",
+  "PyTorch",
+  "PyTorch Geometric",
+  "Scikit-Learn",
+],
     },
   },
-  {
+ {
     id: "fake-news-detection",
     icon: "📰",
-    title: "Fake News Detection Using NLP Models",
+    title: "Fake News Classifier",
     date: "August 2024 – December 2024",
     summary:
-      "Trained and evaluated NLP models on the ISOT Fake News Dataset (44,898 articles), achieving up to 100% accuracy, precision, recall, and F1-score using RoBERTa for real versus fake news classification.",
-    tags: ["Machine Learning"],
+      "Benchmarked Logistic Regression, LSTM, BERT, and RoBERTa on 44,898 ISOT articles. RoBERTa achieved 99.91% accuracy and 99.92% AUC, with systematic ablation across model families informing architecture selection.",
+    tags: ["Machine Learning","NLP"],
     detail: {
       problem:
-        "Accurately classify news articles as real or fake using supervised machine learning and deep learning models trained on labeled textual data.",
+        "Accurately classify news articles as real or fake by benchmarking traditional ML and transformer-based NLP models on a large-scale labeled dataset.",
       github: "https://github.com/munawwar22HU/CS_534_Fake_News_Classifier",
       challenges: [
         "Preprocessing and managing a large-scale textual dataset containing 44,898 labeled news articles.",
-        "Designing a fair comparison between traditional machine learning and transformer-based NLP models.",
-        "Evaluating model performance across multiple metrics, including accuracy, precision, recall, and F1-score, to capture classification quality.",
+        "Designing a fair comparison framework across traditional ML, LSTM, and transformer-based models.",
+        "Evaluating model performance across accuracy, precision, recall, F1, and AUC to capture classification quality under different thresholds.",
       ],
       outcomes: [
-        "Achieved 96.27% testing accuracy and a weighted F1-score of 0.96 using Logistic Regression.",
-        "Improved performance with LSTM, reaching 97% testing accuracy and a weighted F1-score of 0.97.",
-        "Attained 99.55% evaluation accuracy with a weighted F1-score of 1.00 using BERT.",
-        "Reached 100% accuracy, precision, recall, and F1-score on the evaluation set using RoBERTa.",
+        "Logistic Regression achieved 96.27% accuracy and 0.96 weighted F1.",
+        "LSTM improved to 97% accuracy and 0.97 weighted F1.",
+        "BERT reached 99.55% accuracy and 1.00 weighted F1.",
+        "RoBERTa achieved 99.91% accuracy and 99.92% AUC — best performer across all model families.",
       ],
-      stack: ["Python", "Scikit-learn", "LSTM", "BERT", "RoBERTa"],
+      stack: [
+  "Python",
+  "PyTorch",
+  "Scikit-Learn",
+  "Transformers",
+],
     },
   },
   {
     id: "personalized-dp-mia",
     icon: "🔐",
-    title:
-      "Membership Inference Attacks on Personalized Differential Privacy Models",
+    title: "Membership Inference Attack on Personalized Differential Privacy Models",
     date: "August 2024 – December 2024",
     summary:
-      "Evaluated empirical privacy risks of Personalized Differential Privacy using membership inference attacks, achieving up to 98.59% test accuracy on MNIST while observing AUC values closely aligned with individualized privacy budgets across MNIST, CIFAR-10, and SVHN.",
+      "Evaluated privacy risks of Individualized DP-SGD models using black-box membership inference attacks on CNNs trained on CIFAR-10, SVHN, and MNIST, analyzing ROC-AUC scores across privacy budget groups.",
     tags: ["Machine Learning"],
     detail: {
       problem:
-        "Evaluate whether personalized privacy budgets in Personalized Differential Privacy align with empirical privacy risks by measuring membership inference attack success across different user groups.",
+        "Evaluate whether personalized privacy budgets in Individualized DP-SGD align with empirical privacy risks by measuring membership inference attack success across different user groups.",
       github: "https://github.com/munawwar22HU/MIAs_on_Personalized_DP_models",
       challenges: [
-        "Designing experiments to measure empirical privacy risk across multiple user groups with different privacy budgets.",
+        "Designing experiments to measure empirical privacy risk across multiple user groups with different individualized privacy budgets.",
         "Implementing and comparing Standard DP-SGD, IDP-SGD Sample, and IDP-SGD Scale methods under varying group ratios and privacy allocations.",
-        "Balancing privacy protection and model utility while preserving chronological integrity and class distributions across MNIST, CIFAR-10, and SVHN datasets.",
+        "Balancing privacy protection and model utility across MNIST, SVHN, and CIFAR-10 datasets with heterogeneous class distributions.",
       ],
       outcomes: [
-        "Demonstrated that IDP-SGD improves utility while respecting personalized privacy preferences, with Sample and Scale methods achieving higher accuracy than Standard DP-SGD on MNIST and CIFAR-10.",
-        "Observed that AUC values from membership inference attacks aligned with assigned privacy budgets, indicating effective personalized privacy protection.",
-        "Achieved up to 98.59% test accuracy on MNIST using the Scale method under varied privacy budgets, outperforming Sample and Standard methods.",
-        "Identified the Scale method as providing stronger privacy protection and higher accuracy than the Sample method across evaluated datasets.",
+        "IDP-SGD Scale achieved 98.59% accuracy on MNIST, outperforming Standard DP-SGD and IDP-SGD Sample across all datasets.",
+        "AUC values from membership inference attacks aligned with assigned privacy budgets, validating effective personalized privacy protection.",
+        "Identified IDP-SGD Scale as providing both stronger privacy protection and higher accuracy than the Sample method.",
+        "Demonstrated that personalized privacy budgets improve utility without compromising empirical privacy guarantees.",
       ],
       stack: [
         "Python",
         "PyTorch",
-        "Differential Privacy",
-        "IDP-SGD",
-        "CNN",
-        "Membership Inference Attacks",
+        "Opacus",
       ],
     },
   },
-  {
+ {
     id: "camouflaged-animal-detection",
     icon: "🦎",
-    title: "Camouflaged Animal Detection Using YOLOv5",
+    title: "Camouflaged Animal Detection",
     date: "January 2022 – May 2022",
     summary:
-      "Built a data-centric object detection pipeline for camouflaged animals, achieving up to 69.78% mAP@0.5 on real-world wildlife data despite extreme foreground–background similarity.",
-    tags: ["Machine Learning"],
+      "Merged MoCA, Chameleon, and COD10K datasets into a unified benchmark and trained YOLOv5 for camouflaged animal detection, establishing baseline results across the combined dataset.",
+    tags: ["Machine Learning","Computer Vision"],
     detail: {
       problem:
-        "Detect animals that visually blend into their environment, a challenging object detection task due to low contrast, strong camouflage, and limited annotated training data.",
+        "Detect animals that visually blend into their environment — a challenging object detection task due to low contrast, strong camouflage, and limited annotated training data.",
       github: "https://github.com/munawwar22HU/Camouflage-Animal-Detection",
       challenges: [
-        "Handling extremely low foreground–background contrast caused by natural camouflage.",
-        "Unifying multiple camouflaged object detection datasets with inconsistent annotation formats.",
+        "Handling extremely low foreground–background contrast caused by natural camouflage patterns.",
+        "Unifying multiple camouflaged object detection datasets with inconsistent annotation formats into a single benchmark.",
         "Maintaining model performance under severe class imbalance and low recall conditions.",
       ],
       outcomes: [
-        "Unified COD10K and MoCA into a single dataset of 12,683 images across 126 animal categories.",
+        "Unified COD10K, MoCA, and Chameleon into a single dataset of 12,683 images across 126 animal categories.",
         "Achieved 69.78% mAP@0.5 and 47.36% mAP@0.5:0.95 on the MoCA dataset using YOLOv5s.",
-        "Observed low performance on COD10K (4.62% mAP@0.5) due to extreme camouflage, highlighting dataset difficulty.",
+        "Observed low performance on COD10K (4.62% mAP@0.5), highlighting the extreme difficulty of static camouflage detection.",
         "Demonstrated that temporal redundancy in video-derived data significantly improves camouflaged object detection performance.",
       ],
-      stack: ["Python", "PyTorch", "YOLOv5", "Computer Vision", "OpenCV"],
+      stack: ["Python", "PyTorch", "YOLOv5", "OpenCV"],
     },
   },
-  {
+ {
     id: "compression-based-perceiver",
     icon: "🧠",
-    title: "Compression-Based Perceiver for Image Classification",
+    title: "Compression-Based Perceiver",
     date: "August 2021 – May 2022",
     summary:
-      "Evaluated a Perceiver model trained on compressed image embeddings instead of raw pixels, achieving up to 94.4% classification accuracy while reducing the computational cost of vision transformers.",
-    tags: ["Machine Learning"],
+      "Undergraduate capstone — generated latent embeddings for CIFAR-10, CIFAR-100, and ImageNet using Supervised Contrastive Learning and Autoencoders, and trained the Perceiver architecture on limited compute.",
+    tags: ["Machine Learning","Computer Vision"],
     detail: {
       problem:
-        "Reduce the quadratic computational cost of transformer-based vision models by evaluating whether a Perceiver can achieve comparable classification accuracy when trained on compressed latent image representations instead of raw image inputs.",
+        "Reduce the quadratic computational cost of transformer-based vision models by evaluating whether a Perceiver can achieve comparable classification accuracy when trained on compressed latent representations instead of raw image inputs.",
       github: "https://github.com/munawwar22HU/Compression-Based-Perceiver",
       challenges: [
-        "Mitigating quadratic scaling of vision transformers while preserving classification performance.",
+        "Mitigating quadratic scaling of vision transformers while preserving classification performance on limited compute.",
         "Learning semantically meaningful compressed image representations suitable for downstream classification.",
-        "Evaluating model performance across datasets with varying resolution and class complexity.",
+        "Evaluating model performance across datasets with varying resolution and class complexity — CIFAR-10, CIFAR-100, and ImageNet.",
       ],
       outcomes: [
-        "Achieved up to 94.4% test accuracy on CIFAR-10 using supervised contrastive embeddings versus 53.3% with autoencoder embeddings.",
-        "Reached 66.3% accuracy on CIFAR-100 with supervised contrastive embeddings, while autoencoder-based representations failed to generalize.",
-        "Obtained 84.2% accuracy on ImageNet-10 despite high-resolution inputs (224×224).",
-        "t-SNE analysis showed clear class separation for supervised contrastive embeddings, confirming their effectiveness under strong input compression.",
+        "Achieved 94.4% test accuracy on CIFAR-10 using supervised contrastive embeddings vs. 53.3% with autoencoder embeddings.",
+        "Reached 66.3% accuracy on CIFAR-100 with supervised contrastive embeddings — autoencoder representations failed to generalize.",
+        "Obtained 84.2% accuracy on ImageNet-10 despite high-resolution 224×224 inputs.",
+        "t-SNE analysis confirmed clear class separation for supervised contrastive embeddings under strong input compression.",
       ],
       stack: [
         "Python",
         "PyTorch",
-        "Perceiver",
-        "Autoencoders",
-        "Supervised Contrastive Learning",
-        "ResNet",
+        "React",
+        "Heroku"
       ],
     },
   },
   {
     id: "gan-textile-design",
     icon: "🧵",
-    title: "Textile Design Generation Using Generative Adversarial Networks",
-    date: "August 2021 - December 2021",
+    title: "GAN-Based Textile Design Generation",
+    date: "August 2021 – December 2021",
     summary:
-      "Trained and compared DCGAN, StyleGAN, and VAE models on approximately 15,000 textile images across six pattern categories, generating designs at 64×64 and 256×256 resolutions for automated pattern synthesis.",
-    tags: ["Machine Learning"],
+      "Built a custom dataset of Pakistani textile prints via web scraping and trained generative models including DCGAN, StyleGAN, and VAE to synthesize fabric patterns across 6 pattern categories.",
+    tags: ["Machine Learning","Computer Vision"],
     detail: {
       problem:
-        "Automate the generation of textile patterns using deep generative models to reduce manual design effort and explore culturally inspired fabric design synthesis.",
+        "Automate the generation of Pakistani textile patterns using deep generative models, exploring culturally inspired fabric design synthesis from a custom scraped dataset.",
       github:
         "https://github.com/munawwar22HU/Synthetic-Textile-Fabric-Pattern-Generation-using-GAN",
       challenges: [
-        "Collecting and augmenting a textile dataset of approximately 15,000 fabric images spanning six pattern categories.",
-        "Implementing and stabilizing multiple generative architectures, including DCGAN, StyleGAN, and Variational Autoencoders, on a limited dataset.",
+        "Building a custom dataset of approximately 15,000 Pakistani textile fabric images via web scraping across six pattern categories.",
+        "Implementing and stabilizing multiple generative architectures including DCGAN, StyleGAN, and VAE on a limited custom dataset.",
         "Evaluating generative performance across low-resolution (64×64) and higher-resolution (256×256) image settings.",
-        "Managing training instability, noise, and overfitting while preserving visual coherence and aesthetic quality in generated designs.",
+        "Managing training instability and overfitting while preserving visual coherence and aesthetic quality in generated designs.",
       ],
       outcomes: [
-        "Identified DCGAN as the most stable and visually coherent model when trained on 64×64 textile images compared to VAE and StyleGAN.",
-        "Observed that VAE-generated images were blurry and lacked distinct structural patterns.",
-        "Found that StyleGAN outputs exhibited high noise and weak pattern coherence on the available dataset.",
-        "Improved visual fidelity by training DCGAN on 256×256 images, reducing artifacts and enhancing resolution relative to 64×64 outputs.",
+        "DCGAN produced the most stable and visually coherent outputs at 64×64 resolution, outperforming VAE and StyleGAN.",
+        "VAE-generated images were blurry with weak structural patterns — unsuitable for textile design synthesis.",
+        "StyleGAN exhibited high noise and poor pattern coherence on the available dataset size.",
+        "Training DCGAN on 256×256 images reduced artifacts and improved visual fidelity over 64×64 outputs.",
       ],
       stack: [
-        "Python",
-        "PyTorch",
-        "DCGAN",
-        "StyleGAN",
-        "Variational Autoencoder",
-      ],
+  "Python",
+  "PyTorch",
+  "BeautifulSoup",
+  "Pillow",
+],
     },
   },
   {
-    id: "pharmacy-mgmt",
-    icon: "🏥",
-    title: "Pharmacy Management System",
-    date: "January 2021 – August 2021",
+    id: "neural-networks-ufa",
+    icon: "🔬",
+    title: "Neural Networks as Universal Function Approximators",
+    date: "January 2021 – May 2021",
     summary:
-      "Built a full-stack pharmacy management system implementing 4 role-based workflows, 8 REST API modules, and 5 MongoDB data models using dual Angular frontends and a Node.js backend.",
-    tags: ["Full Stack"],
-    detail: {
-      problem:
-        "Build a role-based web system to manage pharmacy operations including inventory, ordering, user administration, and complaints across distinct user types.",
-      github: "https://github.com/munawwar22HU/Pharmacy-Management-System",
-      challenges: [
-        "Designing role-based access control to support Admin, Pharmacist, Manager, and Customer workflows within a single system.",
-        "Implementing a scalable Node.js and Express REST API backed by MongoDB and Mongoose for inventory, orders, complaints, and logs.",
-        "Developing and maintaining two Angular 9 frontends with distinct admin and customer workflows, including shopping cart and checkout.",
-        "Handling file uploads for medicine images and user profiles using Multer while maintaining data consistency.",
-      ],
-      outcomes: [
-        "Implemented 4 user roles with authenticated, role-specific workflows across the application.",
-        "Delivered 8 REST API route modules supporting complete CRUD operations for medicine inventory management.",
-        "Built shopping cart and order processing workflows with checkout and complaint management features.",
-        "Integrated MongoDB using 5 core data models: User, Medicine, Order, Complain, and Log.",
-      ],
-      stack: [
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Angular 9",
-        "TypeScript",
-        "Restful APIs",
-      ],
-    },
-  },
-  {
-    id: "cardiac-arrest-risk-predictor",
-    icon: "❤️",
-    title: "Cardiac Arrest Risk Prediction Using Decision Trees",
-    date: "August 2020 – December 2020",
-    summary:
-      "Built a decision tree classifier from scratch to predict cardiac arrest risk, achieving 81.11% accuracy on real clinical data with an interactive diagnostic interface.",
+      "Analyzed universal approximation theory and exponential depth advantages in neural networks, validating theoretical results through experimental implementation.",
     tags: ["Machine Learning"],
     detail: {
       problem:
-        "Predict cardiac arrest risk using patient clinical features to support early diagnosis and informed medical decision-making.",
-      github: "https://github.com/munawwar22HU/CS-351-AI-Project",
+        "Analyze the theoretical foundations of neural networks as universal function approximators and empirically validate the exponential advantage of deeper networks over shallow networks through controlled experiments.",
+      github: "",
       challenges: [
-        "Implementing a Decision Tree algorithm from scratch with support for entropy and Gini impurity.",
-        "Handling heterogeneous clinical data sourced from multiple medical institutions.",
-        "Designing an interface usable by non-technical users for real-time risk prediction.",
+        "Understanding and communicating the mathematical proofs behind universal approximation theory for neural networks.",
+        "Designing controlled experiments that empirically validate theoretical depth-width tradeoffs.",
+        "Implementing neural network architectures of varying depth and width to compare approximation capacity under constrained parameters.",
+        "Analyzing the gap between theoretical guarantees and practical performance across different function families.",
       ],
       outcomes: [
-        "Achieved 81.11% testing accuracy using a 70–30 train-test split on the UCI Heart Disease Dataset.",
-        "Recorded precision of 81.11% and recall of 89.36% for positive cardiac risk classification.",
-        "Successfully classified patients into risk categories using 14 clinical features.",
-        "Delivered an interactive Tkinter-based GUI displaying predictions alongside model performance metrics.",
+        "Validated that neural networks can approximate any continuous function to arbitrary precision given sufficient capacity.",
+        "Demonstrated empirically that deeper networks achieve equivalent approximation with exponentially fewer parameters than shallow networks.",
+        "Confirmed theoretical depth-width tradeoffs through controlled experimental comparisons across multiple function families.",
+        "Produced a research report analyzing proofs and experimental findings on universal approximation and depth advantages.",
+      ],
+      stack: [
+  "Python",
+  "TensorFlow",
+  "NumPy",
+  "Matplotlib",
+],
+    },
+  },
+  {
+    id: "madness-of-markets",
+    icon: "📈",
+    title: "Madness of Markets",
+    date: "January 2021 – May 2021",
+    summary:
+      "Modeled human decision-making and cascading behavior using network models and game theory, applied to panic buying during COVID-19 in Pakistan and volatility in the Karachi Stock Exchange.",
+    tags: ["Visualization","Statistics"],
+    detail: {
+      problem:
+        "Analyze the Madness of Crowds phenomenon by modeling how external factors influence human decision-making, applying network models and game theory to real-world cases of panic buying during COVID-19 and Karachi Stock Exchange volatility.",
+      github: "",
+      challenges: [
+        "Modeling cascading behavior and herd mentality using network theory and game-theoretic frameworks.",
+        "Applying abstract theoretical models to real-world financial and behavioral data from Pakistan.",
+        "Analyzing KSE volatility and COVID-19 panic buying as parallel case studies with different but related dynamics.",
+        "Communicating complex network and game theory concepts through clear data visualizations.",
+      ],
+      outcomes: [
+        "Demonstrated how cascading behavior and information contagion drive panic buying and market volatility.",
+        "Applied network models to COVID-19 panic buying in Pakistan, identifying key tipping points in consumer behavior.",
+        "Analyzed KSE volatility through a game-theoretic lens, surfacing structural patterns in market decision-making.",
+        "Produced data visualizations and statistical analysis supporting the theoretical findings.",
       ],
       stack: [
         "Python",
-        "NumPy",
-        "Pandas",
-        "Decision Trees",
-        "Tkinter",
+        "Microsoft Excel",
         "Matplotlib",
-        "Seaborn",
       ],
     },
   },
+  
 ];
 
 export const resume = {
-  currentRole: "Data Analyst with 3+ Years Experience",
-
+  currentRole: "Data Analyst | M.S. CS, Emory University (4.0 GPA)",
   education: [
-    "M.S. Computer Science, Emory University",
-    "B.S. Computer Science, Habib University",
+    "M.S. Computer Science, Emory University (GPA: 4.0)",
+    "B.S. Computer Science (Minor: Mathematics), Habib University (GPA: 3.85)",
   ],
-
   pdfUrl: "/resume.pdf",
 };
 
 export const contact = {
   blurb:
-    "Interested in collaborating on data analytics projects or discussing opportunities? I'd love to hear from you. Let's connect and explore how we can work together.",
-
+    "Open to full-time Data Analyst roles in Atlanta or remotely across the US. Feel free to reach out to discuss opportunities or connect.",
   info: {
     emailLabel: "Email",
-    emailText: "munawwaradam@gmail.com",
+    emailText: "[munawwaradam@gmail.com](mailto:munawwaradam@gmail.com)",
     phoneLabel: "Phone",
     phoneText: "(943) 241-3640",
     locationLabel: "Location",
-    locationText: "Atlanta, GA (Open to Relocate)",
+    locationText: "Atlanta, GA",
   },
-
   social: {
     githubLabel: "GitHub",
     githubText: "github.com/munawwar22HU",
     linkedinLabel: "LinkedIn",
-    linkedinText: "linkedin.com/in/munawwar-anwar",
+    linkedinText: "linkedin.com/in/manwar99",
   },
-
   quick: [
     "I typically respond within 24 hours.",
     "Best times: Mon–Fri, 9 AM – 6 PM.",
   ],
-
   responseTimeText: "Response time: Usually within 24 hours",
 };
