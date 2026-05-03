@@ -90,9 +90,8 @@ export default function Resume() {
             Resume
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-zinc-300 sm:text-lg">
-            Download or view my complete professional resume with detailed experience, skills, and achievements.
-          </p>
-        </motion.div>
+  4.0 GPA · 200K+ Records Validated · 50% Query Runtime Reduction
+</p>        </motion.div>
 
         {/* Download Buttons */}
         <motion.div
