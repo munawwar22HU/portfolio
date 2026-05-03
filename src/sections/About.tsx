@@ -327,39 +327,32 @@ function PublicationCards() {
           whileHover={{ scale: 1.01, y: -2 }}
           className="rounded-xl border border-violet-400/20 bg-gradient-to-br from-white/[0.03] to-violet-500/5 p-7 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/40 hover:bg-gradient-to-br hover:from-white/[0.05] hover:to-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20"
         >
-          {/* Award Badge */}
           {pub.award && (
             <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-300">
               🏆 {pub.award}
             </div>
           )}
 
-          {/* Title */}
-          <div className="text-base font-bold text-white leading-snug">
+          <div className="text-base font-bold leading-snug text-white">
             {pub.title}
           </div>
 
-          {/* Authors */}
-          <div className="mt-2 text-xs text-zinc-400 leading-relaxed">
+          <div className="mt-2 text-xs leading-relaxed text-zinc-400">
             {pub.authors}
           </div>
 
-          {/* Conference */}
-          <div className="mt-3 text-xs font-medium bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+          <div className="mt-3 bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-xs font-medium text-transparent">
             {pub.conference}
           </div>
 
-          {/* Meta */}
           <div className="mt-1 text-xs text-zinc-500">
             {pub.location} · {pub.year} · pp. {pub.pages}
           </div>
 
-          {/* Abstract */}
-          <div className="mt-4 text-xs text-zinc-400 leading-relaxed">
+          <div className="mt-4 text-xs leading-relaxed text-zinc-400">
             {pub.abstract}
           </div>
 
-          {/* Stack */}
           <div className="mt-4 flex flex-wrap gap-2">
             {pub.stack.map((tech) => (
               <span
@@ -371,19 +364,18 @@ function PublicationCards() {
             ))}
           </div>
 
-          {/* IEEE Link */}
-          {/* IEEE Link */}
-{/* IEEE Link */}
-<div className="mt-5">
-  
-    href={pub.url}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-300 hover:text-violet-200 underline underline-offset-4 transition-colors"
-  >
-    View on IEEE Xplore →
-  </a>
-</div>
+          {pub.url && (
+            <div className="mt-5">
+              <a
+                href={pub.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-300 underline underline-offset-4 transition-colors hover:text-violet-200"
+              >
+                View on IEEE Xplore →
+              </a>
+            </div>
+          )}
         </motion.div>
       ))}
     </div>
